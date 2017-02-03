@@ -71,7 +71,7 @@
                     @if (Auth::check())
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ url('/login') }}">Login</a>
+                        <a href="{{ url('/login') }}">Vote</a>
                         <a href="{{ url('/register') }}">Register</a>
                     @endif
                 </div>
@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Secure Vote
                 </div>
 
                 <div class="links">

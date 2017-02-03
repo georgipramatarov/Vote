@@ -54,7 +54,7 @@
                         @elseif(! Auth::guest())
                             @include('layouts.dropdown')
                         @else
-                        <li><a href="{{ url('/login') }}">Login</a></li>
+                        <li><a href="{{ url('/login') }}">Vote</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
                         @endif
                     </ul>
