@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Secure Vote') }}</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -36,7 +36,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'Secure Vote') }}
                     </a>
                 </div>
 
@@ -53,7 +53,7 @@
                             @include('layouts.admin-dropdown')
                         @elseif(! Auth::guest())
                             @include('layouts.dropdown')
-                        @else
+                        @elseif (Request::url() == url('/login'))
                         <li><a href="{{ url('/login') }}">Vote</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
                         @endif
