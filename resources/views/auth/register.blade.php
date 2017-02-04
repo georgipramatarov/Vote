@@ -60,6 +60,23 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label">Gender</label>
+
+                            <div class="col-md-6">
+                                <input id="Gender" type="radio" name="Gender" value="male"> Male<br>
+                                <input id="Gender" type="radio" name="Gender" value="female"> Female<br>
+                                <input id="Gender" type="radio" name="Gender" value="other"> Other
+
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
