@@ -61,12 +61,27 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Gender</label>
+                            <label for="" class="col-md-4 control-label">Gender</label>
 
                             <div class="col-md-6">
                                 <input id="Gender" type="radio" name="Gender" value="male"> Male<br>
                                 <input id="Gender" type="radio" name="Gender" value="female"> Female<br>
                                 <input id="Gender" type="radio" name="Gender" value="other"> Other
+
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label">Date Of Birth</label>
+
+                            <div class="col-md-6">
+                              {{ Form::text('date', '', array('id' => 'datepicker')) }}
 
 
                                 @if ($errors->has('password'))

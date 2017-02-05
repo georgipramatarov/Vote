@@ -9,7 +9,7 @@
 
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="/2fa/validate">
-                        {!! csrf_field() !!}
+                        {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('totp') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">One-Time Password</label>

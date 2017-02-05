@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "67cf8e301cd649d074fb22bc52a33b6d",
-    "content-hash": "ea85e6600c2172cb0388c09e91d66eba",
+    "hash": "267a5565315a399f2497e3b651a166d4",
+    "content-hash": "4c0c5885c9f2baf290f8b37ec8d5a0b2",
     "packages": [
         {
             "name": "christian-riesen/base32",
@@ -292,16 +292,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.4.8",
+            "version": "v5.4.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "3e226e3481aabe835626739a1507c8af17b76082"
+                "reference": "600330ae1d218919b3b307e0578461a2df248663"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/3e226e3481aabe835626739a1507c8af17b76082",
-                "reference": "3e226e3481aabe835626739a1507c8af17b76082",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/600330ae1d218919b3b307e0578461a2df248663",
+                "reference": "600330ae1d218919b3b307e0578461a2df248663",
                 "shasum": ""
             },
             "require": {
@@ -417,7 +417,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-02-01 14:45:01"
+            "time": "2017-02-03 19:47:35"
         },
         {
             "name": "laravel/tinker",
@@ -476,6 +476,60 @@
                 "psysh"
             ],
             "time": "2016-12-30 18:13:17"
+        },
+        {
+            "name": "laravelcollective/html",
+            "version": "v5.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelCollective/html.git",
+                "reference": "7570f25d58a00fd6909c0563808590f9cdb14d47"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/7570f25d58a00fd6909c0563808590f9cdb14d47",
+                "reference": "7570f25d58a00fd6909c0563808590f9cdb14d47",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "5.4.*",
+                "illuminate/routing": "5.4.*",
+                "illuminate/session": "5.4.*",
+                "illuminate/support": "5.4.*",
+                "illuminate/view": "5.4.*",
+                "php": ">=5.6.4"
+            },
+            "require-dev": {
+                "illuminate/database": "5.4.*",
+                "mockery/mockery": "~0.9.4",
+                "phpunit/phpunit": "~5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Collective\\Html\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                },
+                {
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
+                }
+            ],
+            "description": "HTML and Form Builders for the Laravel Framework",
+            "homepage": "http://laravelcollective.com",
+            "time": "2017-01-26 19:27:05"
         },
         {
             "name": "league/flysystem",
@@ -737,16 +791,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v3.0.2",
+            "version": "v3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "adf44419c0fc014a0f191db6f89d3e55d4211744"
+                "reference": "5b8182cc0abb4b0ff290ba9df6c0e1323286013a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/adf44419c0fc014a0f191db6f89d3e55d4211744",
-                "reference": "adf44419c0fc014a0f191db6f89d3e55d4211744",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/5b8182cc0abb4b0ff290ba9df6c0e1323286013a",
+                "reference": "5b8182cc0abb4b0ff290ba9df6c0e1323286013a",
                 "shasum": ""
             },
             "require": {
@@ -784,7 +838,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2016-12-06 11:30:35"
+            "time": "2017-02-03 21:57:31"
         },
         {
             "name": "paragonie/constant_time_encoding",
@@ -2855,16 +2909,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.7.9",
+            "version": "5.7.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "69f832b87c731d5cacad7f91948778fe98335fdd"
+                "reference": "bf0804199f516fe80ffcc48ac6d4741c49baeb6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/69f832b87c731d5cacad7f91948778fe98335fdd",
-                "reference": "69f832b87c731d5cacad7f91948778fe98335fdd",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/bf0804199f516fe80ffcc48ac6d4741c49baeb6e",
+                "reference": "bf0804199f516fe80ffcc48ac6d4741c49baeb6e",
                 "shasum": ""
             },
             "require": {
@@ -2881,11 +2935,11 @@
                 "phpunit/php-text-template": "~1.2",
                 "phpunit/php-timer": "^1.0.6",
                 "phpunit/phpunit-mock-objects": "^3.2",
-                "sebastian/comparator": "~1.2.2",
+                "sebastian/comparator": "^1.2.4",
                 "sebastian/diff": "~1.2",
                 "sebastian/environment": "^1.3.4 || ^2.0",
                 "sebastian/exporter": "~2.0",
-                "sebastian/global-state": "^1.0 || ^2.0",
+                "sebastian/global-state": "^1.1",
                 "sebastian/object-enumerator": "~2.0",
                 "sebastian/resource-operations": "~1.0",
                 "sebastian/version": "~1.0|~2.0",
@@ -2933,7 +2987,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-01-28 06:14:33"
+            "time": "2017-02-04 09:03:53"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
