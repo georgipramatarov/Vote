@@ -77,20 +77,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Date Of Birth</label>
-
-                            <div class="col-md-6">
-                              {{ Form::text('date', '', array('id' => 'datepicker')) }}
-
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

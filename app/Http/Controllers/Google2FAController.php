@@ -35,16 +35,16 @@ class Google2FAController extends Controller
         $secret = $this->generateSecret();
 
         //get user
-        $user = $request->user();
+        $admin_user = $request->user();
 
         //encrypt and then save secret
-        $user->google2fa_secret = Crypt::encrypt($secret);
-        $user->save();
+        $admin_user->google2fa_secret = Crypt::encrypt($secret);
+        $admin_user->save();
 
         //generate image for QR barcode
         $imageDataUri = Google2FA::getQRCodeGoogleUrl(
             $request->getHttpHost(),
-            $user->email,
+            $admin_user->email,
             $secret,
             200
         );
@@ -60,11 +60,11 @@ class Google2FAController extends Controller
      */
     public function disableTwoFactor(Request $request)
     {
-        $user = $request->user();
+        $admin_user = $request->user();
 
         //make secret column blank
-        $user->google2fa_secret = null;
-        $user->save();
+        $admin_user->google2fa_secret = null;
+        $admin_user->save();
 
         return view('2fa/disableTwoFactor');
     }

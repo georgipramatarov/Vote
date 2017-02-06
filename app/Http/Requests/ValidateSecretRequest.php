@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Cache;
 use Crypt;
 use Google2FA;
-use App\User;
+use App\AdminUser;
 use App\Http\Requests\Request;
 use Illuminate\Validation\Factory as ValidatonFactory;
 
@@ -13,9 +13,9 @@ class ValidateSecretRequest extends Request
 {
     /**
      *
-     * @var \App\User
+     * @var \App\AdminUser
      */
-    private $user;
+    private $admin_user;
 
     /**
      * Create a new FormRequest instance.
@@ -54,7 +54,7 @@ class ValidateSecretRequest extends Request
     public function authorize()
     {
         try {
-            $this->user = User::findOrFail(
+            $this->user = AdminUser::findOrFail(
                 session('2fa:user:id')
             );
         } catch (Exception $exc) {
