@@ -75,7 +75,8 @@ class LoginController extends Controller
         $request->session()->flush();
 
         $request->session()->regenerate();
-
+        
+        //return admin login page after admin logout
         return redirect('/admin_login');
     }
 
@@ -105,11 +106,12 @@ class LoginController extends Controller
     */
    public function getValidateToken()
    {
+       //checks for the validation token
        if (session('2fa:user:id')) {
            return view('2fa/validate');
        }
-
-       return redirect('admin_login');
+       //if not set returns home
+       return redirect('login');
    }
 
    /**

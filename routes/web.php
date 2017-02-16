@@ -28,6 +28,7 @@ Route::get('admin_password/reset/{token}', 'AdminAuth\ResetPasswordController@sh
 Route::get('admin_register', 'AdminAuth\RegisterController@showRegistrationForm');
 Route::post('admin_register', 'AdminAuth\RegisterController@register');
 
+
 Route::get('/2fa/enable', 'Google2FAController@enableTwoFactor');
 Route::get('/2fa/disable', 'Google2FAController@disableTwoFactor');
 Route::get('/2fa/validate', 'AdminAuth\LoginController@getValidateToken');
