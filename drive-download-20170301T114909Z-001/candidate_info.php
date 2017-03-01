@@ -33,8 +33,8 @@ while ($cands = mysqli_fetch_assoc($result)) {
     echo "<td>".$cands['description']."</td>";
 
     echo "<td>";?><img src="<?php echo $cands["cand_img"];?>"height="120" width="120"><?php 
-
     echo "<td/>";
+    echo "<tr/>";
 
 }
 ?>
