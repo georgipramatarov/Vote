@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-  <h1><br/>Secure Vote <img src="padlock.png" height="50"><br/><br/></h1>
-</head>
+ @include('includes.head')
 <title>Secure Vote</title>
 <body>
   <p1>
