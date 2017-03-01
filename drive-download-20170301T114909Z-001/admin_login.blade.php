@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link rel="stylesheet" href="style.css">
-
-  <h1><br/>Secure Vote <img src="padlock.png" height="50"><br/><br/></h1>
-</head>
+ @include('includes.head')
 <title>Secure Vote - Administrator</title>
 <body>
   <p1>
