@@ -1,22 +1,22 @@
 <html>
-<head>
-<link rel="stylesheet" href="style.css">
-
-  <h1><br/>Secure Vote <img src="padlock.png" height="50"><br/><br/></h1>
-</head>
+ @include('includes.head')
 <title>Secure Vote - Administrator</title>
 <body>
   <p1>
     <center>
-        <table>
-          <tr>
-            <th></th>
-            <th>Votes</th>
-            <th>Vote Start Date</th>
-            <th>End Date</th>
-            <th></th>
-            <th><button>+Create New Vote</button></th>
+        <table class="table table-hover table-responsive">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Votes</th>
+              <th>Vote Start Date</th>
+              <th>End Date</th>
+              <th></th>
+              <th><button>+Create New Vote</button></th>
+          
             </tr>
+           </thead>
+          <tbody>
             <?php
 
               $con = mysqli_connect("csmysql.cs.cf.ac.uk","c1528155","2fyNstSgt","c1528155");
@@ -41,7 +41,8 @@
               }
 
               ?>
-        </table>
+          </tbody>
+      </table>
       </center>
     </p1>
   </body>
