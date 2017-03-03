@@ -55,15 +55,22 @@
                         @elseif(! Auth::guest())
                             @include('layouts.dropdown')
                         @elseif (Request::url() == url('/login'))
-                        <li><a href="{{ url('/login') }}">Vote</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
+                            <li><a href="{{ url('/login') }}">Vote</a></li>
+                            <li><a href="{{ url('/register') }}">Register</a></li>
+                        @elseif(Request::url() == url('/admin_login'))
+                            <li><a href="{{ url('/admin_register') }}">Register</a></li>
                         @endif
                     </ul>
                 </div>
             </div>
         </nav>
 
-        @yield('content')
+        @if(Auth::guard("admin_user")->user())
+          @yield('content')
+          @yield('security_content')
+        @elseif(! Auth::guest())
+          @yield('content')
+        @endif
     </div>
 
     <!-- Scripts -->
@@ -71,14 +78,16 @@
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script type="text/javascript">
-  $(function() {
-    $( "#datepicker" ).datepicker({
-      changeMonth: true,
-      changeYear: true
-    });
+    <script>
+$(document).ready(function(){
+  $("a.test").mouseover(function(){
+      $("a.test").css("background-color", "gray");
   });
-  </script>
+    $("a.test").mouseout(function(){
+        $("a.test").css("background-color", "white");
+    });
+});
+</script>
 
 </body>
 </html>

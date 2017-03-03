@@ -10,9 +10,15 @@ class AdminHomeController extends Controller
   {
       $this->middleware('admin.user');
   }
-  
+
     public function index()
     {
       return view("admin-home");
     }
+
+    public function indexSecurity()
+    {
+      return view("security");
+    }
+
 }

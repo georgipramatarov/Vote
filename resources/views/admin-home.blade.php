@@ -1,32 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+<div class="container col-md-3 col-md-offset-0">
+        <div class="col-md-10">
             <div class="panel panel-default">
                 <div class="panel-heading"> Admin Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in as Admin!
+                    <a class = "nav-bar-mouseover" href="http://127.0.0.1:8000/admin_home"> Overview</a>
                 </div>
-            </div>
-        </div>
-    </div>
-<div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Two-Factor Authentication</div>
+                <form>
+                  {{csrf_field()}}
                 <div class="panel-body">
-                    @if (Auth::guard("admin_user")->user()->google2fa_secret)
-                    <a href="{{ url('2fa/disable') }}" class="btn btn-warning">Disable 2FA</a>
-                    @else
-                    <a href="{{ url('2fa/enable') }}" class="btn btn-primary">Enable 2FA</a>
-                    @endif
+                  <a href="{{ url('admin_home/security') }}" class="test">Security</a>
+                </div>
+              </form>
+                <div class="panel-body">
+                    Current Votes
                 </div>
             </div>
         </div>
-    </div>
 </div>
-
 @endsection
