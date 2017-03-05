@@ -34,7 +34,7 @@ while ($cands = mysqli_fetch_assoc($result)) {
 
     echo "<td>";?><img src="<?php echo $cands["cand_img"];?>"height="120" width="120"><?php 
     echo "<td/>";
-    echo "<td> <a href="details.<php? ID=" . $row['ID'];?> . "" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> More Details</a>
+    echo "<td> <a href="details.<php? ID=" . $row['Candidate_ID'];?> . "" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> More Details</a>
     echo "<tr/>";
 
 }
