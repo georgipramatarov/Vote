@@ -1,7 +1,7 @@
 <?php
-$con = mysqli_connect("csmysql.cs.cf.ac.uk", "c1519251", "UqOHq7Xv", "c1519251");
+$con = mysqli_connect("csmysql.cs.cf.ac.uk", "group8.2016", "dafEvUth5", "group8_2016");
 
-$query = 'SELECT * FROM candidates';
+$query = 'SELECT * FROM Candidates';
 
 $result = mysqli_query($con, $query);
 
