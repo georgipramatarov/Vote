@@ -30,7 +30,7 @@ while ($cands = mysqli_fetch_assoc($result)) {
 
     echo "<td>".$cands['Political_Party']."</td>";
 
-    echo "<td>".$cands['info']."</td>";
+    echo "<td>".$cands['info_short']."</td>";
 
     echo "<td>";?><img src="<?php echo $cands["cand_img"];?>"height="120" width="120"><?php 
     echo "<td/>";
