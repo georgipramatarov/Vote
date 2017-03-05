@@ -26,11 +26,11 @@ while ($cands = mysqli_fetch_assoc($result)) {
 
     echo "<tr>";
 
-    echo "<td>".$cands['cand_id']."</td>";
+    echo "<td>".$cands['Name']."</td>";
 
-    echo "<td>".$cands['cand_name']."</td>";
+    echo "<td>".$cands['Political_Party']."</td>";
 
-    echo "<td>".$cands['shortdescription']."</td>";
+    echo "<td>".$cands['info']."</td>";
 
     echo "<td>";?><img src="<?php echo $cands["cand_img"];?>"height="120" width="120"><?php 
     echo "<td/>";
