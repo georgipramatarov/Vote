@@ -77,6 +77,7 @@
                         @else
                             <a href="{{ url('/login') }}">Cast Vote</a>
                             <a href="{{ url('/register') }}">Register to Vote</a>
+                            <a href="{{ url('/candidates') }}">View all Candidates</a>
                         @endif
                     </div>
                 @endif

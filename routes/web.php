@@ -37,3 +37,5 @@ Route::post('/2fa/validate', ['middleware' => 'throttle:5', 'uses' => 'AdminAuth
 Route::get('/home', 'HomeController@index');
 Route::get('/admin_home', 'AdminHomeController@index');
 Route::get('/admin_home/security', 'AdminHomeController@indexSecurity');
+
+Route::get('/candidates', 'CandidateController@index');

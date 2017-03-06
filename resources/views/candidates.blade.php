@@ -1,0 +1,30 @@
+<html>
+@extends('layouts.layout')
+
+</head>
+@section('content')
+<h1><br/>Candidate Information <br/><br/></h1>
+
+
+<table style="width:50%" align=center>
+	@foreach ($cands as $cand)
+
+	   	<td>
+	    <td>{{ $cand->id }}</td>;
+
+	    <td>{{ $cand->name }}</td>;
+
+	    <td>{{ $cands->info }}</td>;
+
+	    <td> <img src={{$cand->img}} height="120" width="120"><td/>;
+	 @endforeach
+    <!--
+    this bit still dont know whats going on, need to consult lauren
+    <td> <a href="details.<php? ID=" . $row['ID'];?> . "" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> More Details</a>
+    echo "<tr/>"";
+    -->
+
+</table>
+@endsection
+
+</html>
