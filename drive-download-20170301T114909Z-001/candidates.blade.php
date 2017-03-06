@@ -1,7 +1,7 @@
 <?php
-$con = mysqli_connect("csmysql.cs.cf.ac.uk", "c1519251", "UqOHq7Xv", "c1519251");
+$con = mysqli_connect("csmysql.cs.cf.ac.uk", "group8.2016", "dafEvUth5", "group8_2016");
 
-$query = 'SELECT * FROM candidates';
+$query = 'SELECT * FROM Candidates';
 
 $result = mysqli_query($con, $query);
 
@@ -26,15 +26,15 @@ while ($cands = mysqli_fetch_assoc($result)) {
 
     echo "<tr>";
 
-    echo "<td>".$cands['cand_id']."</td>";
+    echo "<td>".$cands['Name']."</td>";
 
-    echo "<td>".$cands['cand_name']."</td>";
+    echo "<td>".$cands['Political_Party']."</td>";
 
-    echo "<td>".$cands['shortdescription']."</td>";
+    echo "<td>".$cands['info_short']."</td>";
 
     echo "<td>";?><img src="<?php echo $cands["cand_img"];?>"height="120" width="120"><?php 
     echo "<td/>";
-    echo "<td> <a href="details.<php? ID=" . $row['ID'];?> . "" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> More Details</a>
+    echo "<td> <a href="details.<php? ID=" . $row['Candidate_ID'];?> . "" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> More Details</a>
     echo "<tr/>";
 
 }
