@@ -1,9 +1,8 @@
-@extends('layouts.app')
+@extends('admin-home')
 
-@section('content')
-<div class="container spark-screen">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+@section('enable_2FA')
+<div class="container col-md-8 col-md-offset-0">
+    <div class="col-md-0 ">
             <div class="panel panel-default">
                 <div class="panel-heading">2FA Secret Key</div>
 
@@ -16,10 +15,9 @@
                     If your 2FA mobile app does not support QR barcodes,
                     enter in the following number: <code>{{ $secret }}</code>
                     <br /><br />
-                    <a href="{{ url('/admin_home') }}">Go Home</a>
+                    <a href="{{ url('/admin_home/security') }}">Go Home</a>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

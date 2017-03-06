@@ -65,12 +65,12 @@
             </div>
         </nav>
 
-        @if(Auth::guard("admin_user")->user())
+
           @yield('content')
-          @yield('security_content')
-        @elseif(! Auth::guest())
-          @yield('content')
-        @endif
+          @yield('security')
+          @yield('overview')
+          @yield('disable_2FA')
+          @yield('enable_2FA')
     </div>
 
     <!-- Scripts -->
@@ -79,15 +79,15 @@
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
-$(document).ready(function(){
-  $("a.test").mouseover(function(){
-      $("a.test").css("background-color", "gray");
-  });
-    $("a.test").mouseout(function(){
-        $("a.test").css("background-color", "white");
+    $(document).ready(function(){
+        $("form.test").hover(function(){
+            $(this).css("background-color", "lightgray");
+            $(this).css("color", "white");
+            }, function(){
+            $(this).css("background-color", "white");
+            $(this).css("color", "black");
+        });
     });
-});
-</script>
-
+    </script>
 </body>
 </html>

@@ -5,20 +5,44 @@
         <div class="col-md-10">
             <div class="panel panel-default">
                 <div class="panel-heading"> Admin Dashboard</div>
-
+                <form class="test">
                 <div class="panel-body">
-                    <a class = "nav-bar-mouseover" href="http://127.0.0.1:8000/admin_home"> Overview</a>
-                </div>
-                <form>
-                  {{csrf_field()}}
-                <div class="panel-body">
-                  <a href="{{ url('admin_home/security') }}" class="test">Security</a>
+                    <a href="{{ url('admin_home/overview') }}" style="text-decoration:none;color: inherit;"> Overview</a>
                 </div>
               </form>
+                <form class="test">
                 <div class="panel-body">
-                    Current Votes
+                  <a href="{{ url('admin_home/security') }}" style="text-decoration:none;color: inherit;">Security</a>
                 </div>
+              </form>
+              <form class="test">
+              <div class="panel-body">
+                  Create Election
+              </div>
+            </form>
+            <form class="test">
+                <div class="panel-body">
+                    Current Elections
+                </div>
+              </form>
+                  <form class="test">
+                <div class="panel-body">
+                    Inbox
+                </div>
+              </form>
+                  <form class="test">
+                <div class="panel-body">
+                    Calendar
+                </div>
+              </form>
+                  <form class="test">
+                <div class="panel-body">
+                    Settings
+                </div>
+              </form>
             </div>
         </div>
 </div>
+
+
 @endsection
