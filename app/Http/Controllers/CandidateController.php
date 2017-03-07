@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Candidate;
 
 class CandidateController extends Controller
 {
@@ -10,5 +11,9 @@ class CandidateController extends Controller
 	{
 		$cands = \App\Candidate::all();
 		return view('candidates', compact('cands'));
+	}
+	public function detail(Candidate $cand)
+	{
+		return view('details', $cand);
 	}
 }

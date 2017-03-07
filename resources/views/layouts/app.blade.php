@@ -42,11 +42,11 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
+                    <!-- Left Side Of Navbar 
                     <ul class="nav navbar-nav">
                         &nbsp;
                     </ul>
-
+                    -->
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
@@ -54,11 +54,14 @@
                             @include('layouts.admin-dropdown')
                         @elseif(! Auth::guest())
                             @include('layouts.dropdown')
-                        @elseif (Request::url() == url('/login'))
-                            <li><a href="{{ url('/login') }}">Vote</a></li>
+                        @elseif (Request::url() == url('/vote'))
+                            <li><a href="{{ url('/vote') }}">Vote</a></li>
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @elseif(Request::url() == url('/admin_login'))
                             <li><a href="{{ url('/admin_register') }}">Register</a></li>
+                        @else
+                            <li><a href="{{ url('/vote') }}">Vote</a></li>
+                            <li><a href="{{ url('/register') }}">Register</a></li>
                         @endif
                     </ul>
                 </div>

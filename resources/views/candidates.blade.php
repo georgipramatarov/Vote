@@ -1,22 +1,21 @@
 <html>
-@extends('layouts.layout')
-
-</head>
+@extends('layouts.app')
 @section('content')
 <h1><br/>Candidate Information <br/><br/></h1>
 
 
-<table style="width:50%" align=center>
+<style type="text/css">
+	td {
+		padding-left-right:2px;
+	}
+</style>
+<table align=center>
 	@foreach ($cands as $cand)
-
-	   	<td>
-	    <td>{{ $cand->id }}</td>;
-
 	    <td>{{ $cand->name }}</td>;
 
-	    <td>{{ $cands->info }}</td>;
+	    <td>{{ $cand->info }}</td>;
 
-	    <td> <img src={{$cand->img}} height="120" width="120"><td/>;
+	    <td><img src = {{$cand->img}} height="120" width="120"><td/>
 	 @endforeach
     <!--
     this bit still dont know whats going on, need to consult lauren
@@ -26,5 +25,4 @@
 
 </table>
 @endsection
-
 </html>
