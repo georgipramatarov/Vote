@@ -43,3 +43,7 @@ Route::get('/admin_home/overview', function(){
     $admin_users = DB::table('admin_users')->get();
     return view('overview',compact('admin_users'));
 });
+
+Route::get('/vote', 'Auth\LoginController@showLoginForm');
+Route::get('/candidates', 'CandidateController@index');
+Route::get('/candidates/{candidate}', 'CandidateController@showimg');
