@@ -47,3 +47,4 @@ Route::get('/admin_home/overview', function(){
 Route::get('/vote', 'Auth\LoginController@showLoginForm');
 Route::get('/candidates', 'CandidateController@index');
 Route::get('/candidates/{candidate}', 'CandidateController@showimg');
+Route::get('/create_election', 'ElectionController@create');

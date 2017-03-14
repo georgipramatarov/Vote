@@ -1,8 +1,6 @@
-<html>
  @include('includes.head')
-<title>Secure Vote - Administrator</title>
-<body>
-form class="form-horizontal">
+ @section('content')
+<form class="form-horizontal">
 <fieldset>
 
 <!-- Form Name -->
@@ -45,5 +43,4 @@ form class="form-horizontal">
 
 </fieldset>
 </form>
-</body>
-</HTML>
+@endsection
