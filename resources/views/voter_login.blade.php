@@ -5,7 +5,7 @@
     <fieldset>
 
       <!-- Form Name -->
-      <legend>Enter your credentials below to register your vote.</legend>
+      <legend style="text-align: center;">Enter your credentials below to register your vote.</legend>
 
       <!-- Text input-->
       <div class="form-group">

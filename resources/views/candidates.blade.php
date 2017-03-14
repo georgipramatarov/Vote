@@ -1,21 +1,25 @@
 <html>
 @extends('layouts.app')
+<link href="css/add.css" rel=stylesheet>
 @section('content')
 <h1><br/>Candidate Information <br/><br/></h1>
 
-
-<style type="text/css">
-	td {
-		padding-left-right:2px;
-	}
-</style>
-<table align=center>
+<table id="candidates" align=center>
 	@foreach ($cands as $cand)
-	    <td>{{ $cand->name }}</td>;
+	    <tr class="candidate">
+		    <th>{{ $cand->name }}</th>
+		</tr>
+		<tr>
+		    <td>
+		    	@if (strlen($cand->info) > 100)
+		    		{{ substr($cand->info, 0, 100) . " ..." }}
+		    	@else
+		    		{{ $cand->info }}
+		    	@endif
+		    </td>
 
-	    <td>{{ $cand->info }}</td>;
-
-	    <td><img src = {{$cand->img}} height="120" width="120"><td/>
+		    <td><img src = {{$cand->img}} height="120" width="120"><td/>
+		</tr>
 	 @endforeach
     <!--
     this bit still dont know whats going on, need to consult lauren

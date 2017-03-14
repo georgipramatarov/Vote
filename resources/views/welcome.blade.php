@@ -75,7 +75,7 @@
                         @if (Auth::check())
                             <a href="{{ url('/home') }}">Home</a>
                         @else
-                            <a href="{{ url('/login') }}">Cast Vote</a>
+                            <a href="{{ url('/vote') }}">Cast Vote</a>
                             <a href="{{ url('/register') }}">Register to Vote</a>
                             <a href="{{ url('/candidates') }}">View all Candidates</a>
                         @endif

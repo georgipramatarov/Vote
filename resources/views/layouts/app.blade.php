@@ -55,10 +55,11 @@
                         @elseif(! Auth::guest())
                             @include('layouts.dropdown')
                         @elseif (Request::url() == url('/vote'))
-                            <li><a href="{{ url('/vote') }}">Vote</a></li>
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @elseif(Request::url() == url('/admin_login'))
                             <li><a href="{{ url('/admin_register') }}">Register</a></li>
+                        @elseif(Request::url() == url('/register'))
+                            <li><a href="{{ url('/vote') }}">Vote</a></li>                          
                         @else
                             <li><a href="{{ url('/vote') }}">Vote</a></li>
                             <li><a href="{{ url('/register') }}">Register</a></li>

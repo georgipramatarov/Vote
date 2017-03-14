@@ -1,0 +1,10 @@
+body {
+	padding-left: 20px;
+}
+#candidates {
+	width: 50%;
+	margin-left: 0;
+}
+#candidates td {
+	border: solid 2px lightgrey;
+}
