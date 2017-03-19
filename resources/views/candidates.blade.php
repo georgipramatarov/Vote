@@ -18,7 +18,7 @@
 		    	@endif
 		    </td>
 
-		    <td><img src = {{$cand->img}} height="120" width="120"><td/>
+		    <td><img src = {{$cand->img}} height="121" width="120"><td/>
 		</tr>
 	 @endforeach
     <!--
