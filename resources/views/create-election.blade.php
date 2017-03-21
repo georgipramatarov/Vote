@@ -1,4 +1,5 @@
- @include('includes.head')
+ @extends('layouts.app')
+ <link rel="stylesheet" type="text/css" href="css/add.css">
  @section('content')
 <form class="form-horizontal">
 <fieldset>
@@ -32,6 +33,36 @@
     
   </div>
 </div>
+
+
+<!-- Select -->
+<div id = "candidate_select">
+  <label>How many Candidates? </label>
+  <select id="num_cands" onchange="cand_generate()">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select>
+</div>
+
+<!-- Text Input -->
+<div id ="candidate_form">
+  <fieldset class="candidate_field[1]">
+    <legend>Candidate #1</legend>
+    <input type="file" name="cand_image[1]">
+    <label>Please choose an image of the candidate to upload</label>
+    <br>
+    <div>
+    <label>Candidate Name: </label><input type="text" name="cand_name[1]">
+    </div>
+    <br>
+    <label>Affiliated Political Party: </label><input type="text" name="cand_pparty[1]">
+    <br>
+    <label>Candidate Description: </label><input type="tex" name="cand_desc[1]">
+    <br>
+  </fieldset>
+ </div> 
 
 <!-- Button -->
 <div class="form-group">
