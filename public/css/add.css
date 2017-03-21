@@ -1,10 +1,42 @@
-body {
-	padding-left: 20px;
-}
 #candidates {
+	padding-left: 20px;
 	width: 50%;
 	margin-left: 0;
 }
 #candidates td {
 	border: solid 2px lightgrey;
+}
+.form-horizontal legend {
+	margin-left: 22.5%;
+	width: 55%;
+}
+#candidate_form, #candidate_select {
+	width: 33%;
+	margin-left: 33.5%;
+}
+#candidate_form {
+	display: table;
+}
+
+fieldset[class^="candidate_field"] {
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+	padding-top: 5px;
+
+	border-width: 1px;
+	border-style: solid;
+	border-color: #e8e8e8;
+}
+
+#candidate_form legend {
+	margin-left: inherit;
+	padding-left: 5%;
+	border-bottom: none;
+}
+#candidate_form label {
+	display: table-cell;
+}
+#candidate_form input {
+	display: table-cell;
 }

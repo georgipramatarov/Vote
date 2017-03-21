@@ -18,6 +18,24 @@
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
         ]) !!};
+
+        //create_election
+        function cand_generate() {
+            var cand_form = document.getElementById('candidate_form');
+            var cand_fieldset = cand_form.children[0];
+            while(cand_form.hasChildNodes()) {
+                cand_form.removeChild(cand_form.lastChild);
+            }
+            var num_cands = document.getElementById('num_cands');
+            num_cands = num_cands.options[num_cands.selectedIndex].value;
+            var cand_clone;
+            for (var i = 0; i < num_cands; i++) {
+                cand_clone = cand_fieldset.cloneNode(true);
+                cand_clone.innerHTML = cand_clone.innerHTML.replace(/1/g, (i + 1).toString());
+                cand_clone.className = "candidate_field[" + (i + 1) + "]";
+                cand_form.appendChild(cand_clone);
+            }
+        }
     </script>
 </head>
 <body>
