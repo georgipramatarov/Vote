@@ -74,7 +74,7 @@
           @yield('overview')
           @yield('disable_2FA')
           @yield('enable_2FA')
-          
+
     </div>
 
     <!-- Scripts -->
