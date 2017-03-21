@@ -75,7 +75,7 @@ class LoginController extends Controller
         $request->session()->flush();
 
         $request->session()->regenerate();
-        
+
         //return admin login page after admin logout
         return redirect('/admin_login');
     }
@@ -111,7 +111,7 @@ class LoginController extends Controller
            return view('2fa/validate');
        }
        //if not set returns home
-       return redirect('login');
+       return redirect('admin_login');
    }
 
    /**

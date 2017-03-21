@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar 
+                    <!-- Left Side Of Navbar
                     <ul class="nav navbar-nav">
                         &nbsp;
                     </ul>
@@ -77,8 +77,8 @@
                         @elseif(Request::url() == url('/admin_login'))
                             <li><a href="{{ url('/admin_register') }}">Register</a></li>
                         @elseif(Request::url() == url('/register'))
-                            <li><a href="{{ url('/vote') }}">Vote</a></li>                          
-                        @else
+                            <li><a href="{{ url('/vote') }}">Vote</a></li>
+                        @elseif(Request::url() == url('/candidates'))
                             <li><a href="{{ url('/vote') }}">Vote</a></li>
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @endif
@@ -87,12 +87,12 @@
             </div>
         </nav>
 
-
           @yield('content')
           @yield('security')
           @yield('overview')
           @yield('disable_2FA')
           @yield('enable_2FA')
+          
     </div>
 
     <!-- Scripts -->
