@@ -17,7 +17,8 @@ class DeniedIfNoAdmin
      */
     public function handle($request, Closure $next, $guard = "admin_user")
     {
-      if(! Auth::guard($guard)->user()){
+
+      if(! Auth::guard($guard)->user() || Auth::guard($guard)->user()->authorize == 0){
 
         abort(403, 'Unauthorized action.');
       }

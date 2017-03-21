@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\AdminAuth;
 
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\AdminAuth;
+use App\Mail\Authorize;
 use App\AdminUser;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -72,16 +75,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+      $admin_users = DB::table('admin_users')->get();
+      foreach ($admin_users as $admin_user) {
+        if($admin_user->authorize == 1){
+        \Mail::to($admin_user->email)->send(new Authorize);
+      }
+      }
         return AdminUser::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
-    }
-
-    public function register()
-    {
-      return view();
     }
 
 }
