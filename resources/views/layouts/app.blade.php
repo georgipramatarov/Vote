@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/add.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <!-- Scripts -->
     <script>
@@ -92,6 +93,7 @@
           @yield('overview')
           @yield('disable_2FA')
           @yield('enable_2FA')
+          @yield('content-create-election')
 
     </div>
 

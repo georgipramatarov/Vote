@@ -15,11 +15,9 @@
                   <a href="{{ url('admin_home/security') }}" style="text-decoration:none;color: inherit;">Security</a>
                 </div>
               </form>
-              <form class="test">
-              <div class="panel-body">
-                  Create Election
+              <div class="panel-body ">
+                <a href="{{ url('admin_home/create-election') }}" style="text-decoration:none;color: inherit;">Create Election</a>
               </div>
-            </form>
             <form class="test">
                 <div class="panel-body">
                     Current Elections
