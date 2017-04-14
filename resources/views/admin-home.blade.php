@@ -15,14 +15,11 @@
                   <a href="{{ url('admin_home/security') }}" style="text-decoration:none;color: inherit;">Security</a>
                 </div>
               </form>
+              <form class="test">
               <div class="panel-body ">
-                <a href="{{ url('admin_home/create-election') }}" style="text-decoration:none;color: inherit;">Create Election</a>
+                <a href="{{ url('admin_home/election') }}" style="text-decoration:none;color: inherit;">Election</a>
               </div>
-            <form class="test">
-                <div class="panel-body">
-                    Current Elections
-                </div>
-              </form>
+            </form>
                   <form class="test">
                 <div class="panel-body">
                     Inbox

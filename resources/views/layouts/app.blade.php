@@ -94,6 +94,7 @@
           @yield('disable_2FA')
           @yield('enable_2FA')
           @yield('content-create-election')
+          @yield('election-home')
 
     </div>
 

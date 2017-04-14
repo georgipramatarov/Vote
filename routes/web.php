@@ -39,6 +39,9 @@ Route::get('/admin_home', 'AdminHomeController@index');
 Route::get('/admin_home/security', function(){
     return view('security');
 });
+Route::get('/admin_home/election', function(){
+    return view('election');
+});
 Route::get('/admin_home/overview', function(){
     $admin_users = DB::table('admin_users')->get();
     return view('overview',compact('admin_users'));

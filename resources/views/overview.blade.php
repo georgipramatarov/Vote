@@ -31,7 +31,7 @@
                   @if($admin_user->authorize !=1)
                   <div class="panel-body col-md-7">{{ $admin_user->email}} </div>
                   <div class="panel-body col-md-3"> Requested: {{ Carbon\Carbon::parse($admin_user->created_at)->diffForHumans()}} </div>
-                  <form method="post" >
+                  <form method="post">
                     {{csrf_field()}}
                   <div class="panel-body">
                     <button type="submit" class="btn btn-primary">
