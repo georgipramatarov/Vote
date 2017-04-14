@@ -47,10 +47,9 @@ class create_new_election extends Notification
 
 
         return (new MailMessage)
-                    ->greeting('Hello!')
-                    ->line('Do you agree with the information of this new
-                    election?')
-                    ->action('I agree', 'http://127.0.0.1:8000/admin_home/create_election')
+                    ->greeting('Hello Admins!')
+                    ->line('New Election has been created.')
+                    ->action('OK', 'http://127.0.0.1:8000/admin_home/create_election')
                     ->line('Thank you!');
     }
 
