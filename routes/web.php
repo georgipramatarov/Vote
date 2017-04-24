@@ -18,7 +18,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
 Route::get('admin_login', 'AdminAuth\LoginController@showLoginForm');
 Route::post('admin_login', 'AdminAuth\LoginController@login');
 Route::post('admin_logout', 'AdminAuth\LoginController@logout');
@@ -28,7 +27,6 @@ Route::post('admin_password/reset', 'AdminAuth\ResetPasswordController@reset');
 Route::get('admin_password/reset/{token}', 'AdminAuth\ResetPasswordController@showResetForm');
 Route::get('admin_register', 'AdminAuth\RegisterController@showRegistrationForm');
 Route::post('admin_register', 'AdminAuth\RegisterController@register');
-
 
 Route::get('/2fa/enable', 'Google2FAController@enableTwoFactor');
 Route::get('/2fa/disable', 'Google2FAController@disableTwoFactor');
@@ -50,8 +48,12 @@ Route::get('/admin_home/overview', function(){
 Route::post('/admin_home/overview', function(Request $request){
   if(isset($_POST['Grant'])){
     DB::table('admin_users')->where('id', Input::get('id') )->update(['authorize' => 1]);
+    $admin_users = DB::table('admin_users')->get();
+    return view('overview',compact('admin_users'));
   }elseif (isset($_POST['Deny'])) {
     DB::table('admin_users')->where('id', Input::get('id') )->delete();
+    $admin_users = DB::table('admin_users')->get();
+    return view('overview',compact('admin_users'));
   }
 });
 

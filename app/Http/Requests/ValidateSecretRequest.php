@@ -26,23 +26,23 @@ class ValidateSecretRequest extends Request
     public function __construct(ValidatonFactory $factory)
     {
         $factory->extend(
-            'valid_token',
+            'valid',
             function ($attribute, $value, $parameters, $validator) {
                 $secret = Crypt::decrypt($this->user->google2fa_secret);
 
                 return Google2FA::verifyKey($secret, $value);
             },
-            'Not a valid token'
+            'Provided token is not valid'
         );
 
         $factory->extend(
-            'used_token',
+            'used',
             function ($attribute, $value, $parameters, $validator) {
                 $key = $this->user->id . ':' . $value;
 
                 return !Cache::has($key);
             },
-            'Cannot reuse token'
+            'Provided token has already been used! Please try again, with a new one.'
         );
     }
 
@@ -72,7 +72,7 @@ class ValidateSecretRequest extends Request
     public function rules()
     {
         return [
-            'totp' => 'bail|required|digits:6|valid_token|used_token',
+            'totp' => 'bail|required|digits:6|valid|used',
         ];
     }
 }

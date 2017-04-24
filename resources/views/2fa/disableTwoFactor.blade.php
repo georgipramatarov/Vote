@@ -4,10 +4,10 @@
 <div class="container col-md-8 col-md-offset-0">
     <div class="col-md-0 ">
             <div class="panel panel-default">
-                <div class="panel-heading">2FA Secret Key</div>
+                <div class="panel-heading">Secret Key</div>
 
                 <div class="panel-body">
-                    2FA has been removed
+                    Two-Factor Authentication has been disabled.
                     <br /><br />
                     <a href="{{ url('/admin_home/security') }}">Go Home</a>
                 </div>

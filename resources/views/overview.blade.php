@@ -10,7 +10,7 @@
 
                   @foreach ($admin_users as $admin_user)
                   @if(Auth::guard('admin_user')->user()->name != $admin_user->name && $admin_user->authorize !=0 )
-                  <div class="panel-body">{{ $admin_user->email}} </div>
+                  <div class="panel-body" id="result">{{ $admin_user->email}} </div>
                   @endif
                   @endforeach
 
@@ -34,10 +34,10 @@
                     {{csrf_field()}}
                     {{ Form::hidden('id', $admin_user->id) }}
                   <div class="panel-body">
-                    <button method="post" class="btn btn-primary" name = "Deny" style="background-color:red;border:none">
+                    <button method="post" type ="submit" class="btn btn-primary" name = "Deny" style="background-color:red;border:none">
                         Deny
                     </button>
-                    <button method="post" class="btn btn-primary" name = "Grant" style="background-color:green;border:none">
+                    <button method="post" type ="submit" class="btn btn-primary" name = "Grant" style="background-color:green;border:none">
                         Grant
                     </button>
                   </div>

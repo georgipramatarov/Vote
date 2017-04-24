@@ -5,14 +5,13 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">2FA</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="/2fa/validate">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('totp') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">One-Time Password</label>
+                            <label class="col-md-4 control-label">Enter Code:</label>
 
                             <div class="col-md-6">
                                 <input type="number" class="form-control" name="totp">

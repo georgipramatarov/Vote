@@ -71,12 +71,9 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         $this->guard()->logout();
-
         $request->session()->flush();
-
         $request->session()->regenerate();
 
-        //return admin login page after admin logout
         return redirect('/admin_login');
     }
 
@@ -91,12 +88,9 @@ class LoginController extends Controller
     {
         if ($user->google2fa_secret) {
             Auth::logout();
-
             $request->session()->put('2fa:user:id', $user->id);
-
             return redirect('2fa/validate');
         }
-
         return redirect('admin_home');
     }
 
@@ -121,16 +115,13 @@ class LoginController extends Controller
  */
 public function postValidateToken(ValidateSecretRequest $request)
 {
-    //get user id and create cache key
+
     $userId = $request->session()->pull('2fa:user:id');
     $key    = $userId . ':' . $request->totp;
 
-    //use cache to store token to blacklist
     Cache::add($key, true, 4);
 
-    //login and redirect user
     Auth::loginUsingId($userId);
-
     return redirect()->intended($this->redirectTo);
 }
 
