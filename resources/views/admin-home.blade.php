@@ -16,7 +16,7 @@
                 </div>
               </form>
               <div class="panel-body ">
-                <a href="{{ url('admin_home/create-election') }}" style="text-decoration:none;color: inherit;">Create Election</a>
+                <a href="{{ url('admin_home/elections/create') }}" style="text-decoration:none;color: inherit;">Create Election</a>
               </div>
             <form class="test">
                 <div class="panel-body">
