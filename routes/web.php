@@ -45,6 +45,12 @@ Route::get('/admin_home/overview', function(){
     $admin_users = DB::table('admin_users')->get();
     return view('overview',compact('admin_users'));
 });
+Route::get('/admin_home/pollingcards', function(){
+    return view('polling_cards');
+});
+Route::get('/admin_home/pollingcards/generate', function(){
+    return view('pdf/generatepollingcards');
+});
 Route::post('/admin_home/overview', function(Request $request){
   if(isset($_POST['Grant'])){
     DB::table('admin_users')->where('id', Input::get('id') )->update(['authorize' => 1]);

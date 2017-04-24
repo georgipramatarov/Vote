@@ -24,7 +24,7 @@
         </tr>
         <tr>
           <th colspan="2">
-          <a href="#" class="btn btn-lg btn-primary">Log in</a>          </th>
+          <a href="#" class="btn btn-lg btn-primary">Log in</a></th>
         </tr>
         </table>
       </center>    

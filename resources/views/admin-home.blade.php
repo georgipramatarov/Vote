@@ -4,37 +4,51 @@
 <div class="container col-md-3 col-md-offset-0">
         <div class="col-md-10">
             <div class="panel panel-default">
-                <div class="panel-heading" style="background-color:lightgray"> Admin Dashboard</div>
-                <form class="test">
-                <div class="panel-body">
-                    <a href="{{ url('admin_home/overview') }}" style="text-decoration:none;color: inherit;"> Overview</a>
-                </div>
-              </form>
-                <form class="test">
-                <div class="panel-body">
-                  <a href="{{ url('admin_home/security') }}" style="text-decoration:none;color: inherit;">Security</a>
-                </div>
-              </form>
+                <div class="panel-heading" style="background-color:#428BCA; color: white;"> Admin Dashboard</div>
+              
+              <!-- Overview -->
               <form class="test">
-              <div class="panel-body ">
-                <a href="{{ url('admin_home/election') }}" style="text-decoration:none;color: inherit;">Election</a>
-              </div>
+                <a href="{{ url('admin_home/overview') }}" style="text-decoration:none;color: inherit;">
+                  <div class="panel-body">Overview</div>
+                </a>
+              </form>
+
+              <!-- Admins -->
+              <form class="test">
+                <a href="{{ url('admin_home/overview') }}" style="text-decoration:none;color: inherit;">
+                  <div class="panel-body">Admins</div>
+                </a>
+              </form>
+            
+            <!-- Security -->
+            <form class="test">
+              <a href="{{ url('admin_home/security') }}" style="text-decoration:none;color: inherit;">
+                <div class="panel-body">Security</div>
+              </a>  
             </form>
-                  <form class="test">
-                <div class="panel-body">
-                    Inbox
-                </div>
-              </form>
-                  <form class="test">
-                <div class="panel-body">
-                    Calendar
-                </div>
-              </form>
-                  <form class="test">
-                <div class="panel-body">
-                    Settings
-                </div>
-              </form>
+            
+            <!-- Elections -->
+            <form class="test">
+              <a href="{{ url('admin_home/election') }}" style="display: block; text-decoration:none;color: inherit;">
+                <div class="panel-body ">Elections</div>
+              </a>
+            </form>
+            
+            <!-- Polling Cards -->
+            <form class="test">
+              <a href="{{ url('admin_home/pollingcards') }}" style="display: block; text-decoration:none;color: inherit;">
+                <div class="panel-body">Polling Cards</div>
+              </a>
+            </form>
+              
+            <!-- Settings -->
+            <form class="test">
+              <a href="{{ url('admin_home/#') }}" style="display: block; text-decoration:none;color: inherit;">
+                <div class="panel-body">Settings</div>
+              </a>
+            </form>
+
+
             </div>
         </div>
 </div>
