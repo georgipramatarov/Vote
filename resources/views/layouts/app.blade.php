@@ -55,8 +55,9 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Secure Vote') }}
-                        {{date("m/d/Y")}}
+                        <!--{{ config('app.name', 'Secure Vote') }}
+                        {{date("m/d/Y")}}-->
+                        &#128274; Secure Vote
                     </a>
                 </div>
 
