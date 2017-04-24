@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Elections;
+use App\Candidate;
 
 class ElectionController extends Controller
 {
@@ -10,9 +12,9 @@ class ElectionController extends Controller
    	{
    		return view("create-election");
    	}
-   	function store()
+   	function store(Request $request)
    	{
-   		Election::create([
+   		Elections::create([
    			"election_name" => request("election_name"),
    			"election_desc" => request("election_desc"),
    			"num_candidates" => request("num_candidates"),
@@ -20,15 +22,15 @@ class ElectionController extends Controller
    			"close_date" => request("close_date")
    		]);
    		$num_cands = request("num_candidates");
-   		$el_id = DB::table("elections")->orderBy("created_at","desc")->first();
+   		$el_id = \DB::table("elections")->orderBy("created_at","desc")->first()->id;
    		for ($i=0; $i < $num_cands; $i++) {
    			$j = $i + 1;
 
    			Candidate::create([
-   				"name" => request("cand_name[{$j}]"),
-   				"political_party" => request("cand_pparty[{$j}]"),
-   				"info" => request("cand_desc[{$j}]"),
-   				"img" => request("cand_img[{$j}]"),
+   				"name" => $request->cand_name[1],
+   				"political_party" => $request->cand_pparty[1],
+   				"info" => $request->cand_desc[1],
+   				"img" => $request->cand_img[1],
    				"election_id" => $el_id,
    			]);
    		}

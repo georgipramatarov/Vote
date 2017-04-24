@@ -27,7 +27,7 @@
             while(cand_form.hasChildNodes()) {
                 cand_form.removeChild(cand_form.lastChild);
             }
-            var num_cands = document.getElementById('num_cands');
+            var num_cands = document.getElementById('num_candidates');
             num_cands = num_cands.options[num_cands.selectedIndex].value;
             var cand_clone;
             for (var i = 0; i < num_cands; i++) {
