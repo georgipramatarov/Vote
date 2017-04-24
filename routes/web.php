@@ -1,5 +1,6 @@
 <?php
-
+use App\Notifications\create_new_election;
+use Illuminate\Support\Facades\Input;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,13 +40,34 @@ Route::get('/admin_home', 'AdminHomeController@index');
 Route::get('/admin_home/security', function(){
     return view('security');
 });
+Route::get('/admin_home/election', function(){
+    return view('election');
+});
 Route::get('/admin_home/overview', function(){
     $admin_users = DB::table('admin_users')->get();
     return view('overview',compact('admin_users'));
+});
+Route::post('/admin_home/overview', function(Request $request){
+  if(isset($_POST['Grant'])){
+    DB::table('admin_users')->where('id', Input::get('id') )->update(['authorize' => 1]);
+  }elseif (isset($_POST['Deny'])) {
+    DB::table('admin_users')->where('id', Input::get('id') )->delete();
+  }
 });
 
 Route::get('/vote', 'Auth\LoginController@showLoginForm');
 Route::get('/candidates', 'CandidateController@index');
 Route::get('/candidates/{candidate}', 'CandidateController@showimg');
+<<<<<<< HEAD
 Route::get('/admin_home/elections/create', 'ElectionController@create');
 Route::post('/admin_home/elections', 'ElectionController@store');
+=======
+Route::get('/admin_home/create-election', 'ElectionController@create');
+
+
+Route::get('/admin_home/create_election/noti',function(){
+  $users=App\adminInfo::first();
+  $electioncreate=App\createElection::first();
+  $users->notify(new create_new_election($electioncreate));
+});
+>>>>>>> 4298848853da7f97aef7e2da23095aa4ad60ea29
