@@ -60,11 +60,9 @@ Route::post('/admin_home/overview', function(Request $request){
 Route::get('/vote', 'Auth\LoginController@showLoginForm');
 Route::get('/candidates', 'CandidateController@index');
 Route::get('/candidates/{candidate}', 'CandidateController@showimg');
-<<<<<<< HEAD
-Route::get('/admin_home/elections/create', 'ElectionController@create');
-Route::post('/admin_home/elections', 'ElectionController@store');
-=======
 Route::get('/admin_home/create-election', 'ElectionController@create');
+Route::post('/admin_home/create-election', 'ElectionController@store');
+
 
 
 Route::get('/admin_home/create_election/noti',function(){
@@ -72,4 +70,3 @@ Route::get('/admin_home/create_election/noti',function(){
   $electioncreate=App\createElection::first();
   $users->notify(new create_new_election($electioncreate));
 });
->>>>>>> 4298848853da7f97aef7e2da23095aa4ad60ea29

@@ -16,6 +16,12 @@ class CreateElectionsTable extends Migration
         Schema::create('elections', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('election_name');
+            $table->string('election_desc');
+            $table->integer('num_candidates');
+            $table->datetime('start_date');
+            $table->datetime('close_date');
+
         });
     }
 

@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 class ElectionController extends Controller
 {
-   	function create() 
+   	function create()
    	{
-   		return view("elections\create");
+   		return view("create-election");
    	}
    	function store()
    	{
@@ -20,8 +20,8 @@ class ElectionController extends Controller
    			"close_date" => request("close_date")
    		]);
    		$num_cands = request("num_candidates");
-   		$el_id = DB::table("Elections")->orderBy("created_at","desc")->first();
-   		@for ($i=0; $i < $num_cands; $i++) { 
+   		$el_id = DB::table("elections")->orderBy("created_at","desc")->first();
+   		for ($i=0; $i < $num_cands; $i++) {
    			$j = $i + 1;
 
    			Candidate::create([
