@@ -76,3 +76,7 @@ Route::get('/admin_home/create_election/noti',function(){
   $electioncreate=App\createElection::first();
   $users->notify(new create_new_election($electioncreate));
 });
+
+Route::get('/admin_homepage', function(){
+  return view('admin_homepage');
+});
