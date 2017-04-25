@@ -19,6 +19,17 @@
 
 </script>
 
+<?php 
+	session_start();
+	
+	if (isset($_SESSION['cardsCreated']) and $_SESSION['cardsCreated'] == "1"){
+		echo "<script>alert('Polling cards successfully created')</script>";
+		unset($_GET['cards']);
+	}
+
+	session_destroy();
+?>
+
 <!-- Generate all/first x -->
 <div class="container col-md-8 col-md-offset-0">
         <div class="col-md-0 ">
@@ -36,11 +47,16 @@
                 		<input type="checkbox" name="limit" id="limit" value="yes">
                 	    <label for="limit">Limit</label>
 
-
                 		<input type="text" name="count" value="1" id="count" style="margin-left: 1em;">
                 		
                 		<span class="help-block" style="margin-left: 1em;">
-                			This allows you to limit the amount of polling cards generated for testing purposes.
+                			Limit the amount of polling cards generated for testing purposes.
+                		</span>
+
+                		<input type="checkbox" name="zip" id="zip" value="1"  checked>
+                		<label for="zip">Download ZIP</label>
+                		<span class="help-block" style="margin-left: 1em;">
+                			Download all of the polling cards as a ZIP archive.
                 		</span>
                 	</div>
                 	
@@ -67,10 +83,10 @@
                 <form id="genOneCard">
                 	<div class="form-group" style="padding-left:1em; padding-top: 1em;">
                 	<label for="nino">National Insurance Number:</label>
-                	<input type="text" name="nino">
+                	<input type="text" disabled="true" name="nino">
                 	</div>
 
-                	<button method="post" type ="submit" class="btn btn-primary" name = "Grant">Generate</button>
+                	<button method="post" type ="submit" class="btn btn-primary" name = "Grant" disabled="true">Generate</button>
                 </form>
             </div>
       </div>
@@ -83,7 +99,7 @@
         <div class="panel-body">
         From here you can send polling cards out to registered voters. For the prototype polling cards are sent via Email.
 
-        	<button method="post" type ="submit" class="btn btn-primary" name = "Grant">Send</button>
+        	<button method="post" type ="submit" class="btn btn-primary" disabled="true" name = "Grant">Send</button>
           </div>
       </div>
 </div>

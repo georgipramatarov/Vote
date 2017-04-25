@@ -1,11 +1,15 @@
 @extends('admin-home')
  @section('content-create-election')
   <form class="form-horizontal" method="POST" action="/admin_home/create-election">
-    {{ csrf_field() }};
+    {{ csrf_field() }}
     <fieldset>
 
+<div class="container col-md-8 col-md-offset-0">
+            <div class="panel panel-default">
+            <div class="panel-heading" style="background-color:lightgray">New Election</div>
+            <div class="panel-body">
     <!-- Form Name -->
-      <legend>New Election</legend>
+      
 
       <!-- Text input-->
       <div class="form-group">
@@ -52,6 +56,8 @@
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
         </select>
       </div>
 
@@ -83,4 +89,7 @@
 
     </fieldset>
   </form>
+  </div>
+  </div>
+  </div>
 @endsection
