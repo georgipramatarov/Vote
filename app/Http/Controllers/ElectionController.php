@@ -22,17 +22,19 @@ class ElectionController extends Controller
    			"close_date" => request("close_date")
    		]);
    		$num_cands = request("num_candidates");
-   		$el_id = \DB::table("elections")->orderBy("created_at","desc")->first()->id;
+      $el = request("election_name");
+   		//$el_id = \DB::table("elections")->orderBy("created_at","desc")->first()->id;
    		for ($i=0; $i < $num_cands; $i++) {
    			$j = $i + 1;
 
    			Candidate::create([
-   				"name" => $request->cand_name[1],
-   				"political_party" => $request->cand_pparty[1],
-   				"info" => $request->cand_desc[1],
-   				"img" => $request->cand_img[1],
-   				"election_id" => $el_id,
+   				"name" => $request->cand_name[$j],
+   				"political_party" => $request->cand_pparty[$j],
+   				"info" => $request->cand_desc[$j],
+   				"img" => $request->cand_img[$j],
+          "election_name" => $el,
    			]);
    		}
+      return view('election');
    	}
 }

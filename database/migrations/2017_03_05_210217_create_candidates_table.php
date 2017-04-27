@@ -19,6 +19,7 @@ class CreateCandidatesTable extends Migration
             $table->string('political_party');
             $table->text('info');
             $table->string('img');
+            $table->string('election_name');
             $table->timestamps();
         });
     }

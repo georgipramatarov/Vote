@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Input;
 Route::get('/', function () {
     return view('voter_login');
 });
+Route::post('/',function(){
+  if (DB::table('electoral_roll')->where('National Insurance Number', Input::get('natioalinsuranceno'))->exists()) {
+      return view('welcome');
+  }
+});
 
 Auth::routes();
 

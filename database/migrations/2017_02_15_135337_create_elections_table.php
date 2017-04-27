@@ -19,8 +19,8 @@ class CreateElectionsTable extends Migration
             $table->string('election_name');
             $table->string('election_desc');
             $table->integer('num_candidates');
-            $table->datetime('start_date');
-            $table->datetime('close_date');
+            $table->date('start_date');
+            $table->date('close_date');
 
         });
     }
