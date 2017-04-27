@@ -17,30 +17,27 @@
             </tr>
            </thead>
           <tbody>
-            <?php
-
-              $con = mysqli_connect("csmysql.cs.cf.ac.uk","c1528155","2fyNstSgt","c1528155");
-              if(!$con){
-                        die("Cant connect: " . mysql_error());
-                    }
-
-              $query = "SELECT * FROM CURRENTVOTE";
-
-              $result = mysqli_query($con,$query);
-              while($row = mysqli_fetch_assoc($result)){
-              echo "<tr><td>Current Vote...</td><td>". $row["VotingQuestion"] . "</td><td>" . $row["StartDate"] . "</td><td>" . $row["EndDate"] . "</td><td></td></tr>"
-              ;
-              }
-
-               $query = "SELECT * FROM PREVIOUSVOTES";
-
-              $result = mysqli_query($con,$query);
-              while($row = mysqli_fetch_assoc($result)){
-              echo "<tr><td></td><td>". $row["VotingQuestion"] . "</td><td>" . $row["StartDate"] . "</td><td>" . $row["EndDate"] . "</td><td><ahref=\"".$row["results"] ."\">View Voting Results</a></td></tr>"
-              ;
-              }
-
-              ?>
+             <?php
+ -
+ -              $con = mysqli_connect("csmysql.cs.cf.ac.uk","group8.2016","dafEvUth5","group8_2016");
+ -              if(!$con){
+ -                        die("Cant connect: " . mysql_error());
+ -                    }
+ -               
+ -              $query = "SELECT * FROM elections";
+ -              $today = date("Y-m-d H:i:s");
+ -              $result = mysqli_query($con,$query);
+ -              while($row = mysqli_fetch_assoc($result)){
+ -              $date = $row["end_date"] . " 00:00:00";
+ -              if ($date > $today) {
+ -              echo "<tr><td></td><td>". $row["election_name"] . "</td><td>" . $row["start_date"] . "</td><td>" . $row["end_date"] . "</td><td><ahref=\"".$row["results"] ."\">View Voting Results</a></td></tr>" 
+ -              ;}else{ 
+ -              //this is if the election is the current one
+ -              }
+ -              }
+ -              }
+ -
+ -              ?>
           </tbody>
       </table>
       </center>
