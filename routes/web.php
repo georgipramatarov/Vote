@@ -17,7 +17,7 @@ Route::get('/', function () {
 });
 Route::post('/',function(){
   if (DB::table('electoral_roll')->where('National Insurance Number', Input::get('natioalinsuranceno'))->exists()) {
-      return view('welcome');
+      return view('home');
   }
 });
 
