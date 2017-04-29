@@ -56,6 +56,10 @@
         </div>
       </div>
 
+      <!-- Failed Auth -->
+      @if (isset( $error ))
+      <script type="text/javascript">alert('Login Failed - Invalid Credentials.\nPlease try again')</script>
+      @endif
     </fieldset>
    </form>
   </p1>
