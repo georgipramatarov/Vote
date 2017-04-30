@@ -26,6 +26,7 @@ Route::post('/',function(){
 
 Auth::routes();
 
+
 Route::get('admin_login', 'AdminAuth\LoginController@showLoginForm');
 Route::post('admin_login', 'AdminAuth\LoginController@login');
 Route::post('admin_logout', 'AdminAuth\LoginController@logout');
@@ -36,12 +37,12 @@ Route::get('admin_password/reset/{token}', 'AdminAuth\ResetPasswordController@sh
 Route::get('admin_register', 'AdminAuth\RegisterController@showRegistrationForm');
 Route::post('admin_register', 'AdminAuth\RegisterController@register');
 
+Route::group(['middleware' => 'App\Http\Middleware\DeniedIfNoAdmin'], function(){
 Route::get('/2fa/enable', 'Google2FAController@enableTwoFactor');
 Route::get('/2fa/disable', 'Google2FAController@disableTwoFactor');
 Route::get('/2fa/validate', 'AdminAuth\LoginController@getValidateToken');
 Route::post('/2fa/validate', ['middleware' => 'throttle:5', 'uses' => 'AdminAuth\LoginController@postValidateToken']);
 
-Route::get('/home', 'HomeController@index');
 Route::get('/admin_home', 'AdminHomeController@index');
 Route::get('/admin_home/security', function(){
     return view('security');
@@ -70,6 +71,7 @@ Route::get('/admin_home/vac/generate', function(){
 Route::get('/admin_home/votecodes', function(){
     return view('votecodes');
 });
+
 Route::post('/admin_home/overview', function(Request $request){
   if(isset($_POST['Grant'])){
     DB::table('admin_users')->where('id', Input::get('id') )->update(['authorize' => 1]);
@@ -98,4 +100,5 @@ Route::get('/admin_home/create_election/noti',function(){
 
 Route::get('/admin_homepage', function(){
   return view('admin_homepage');
+});
 });
