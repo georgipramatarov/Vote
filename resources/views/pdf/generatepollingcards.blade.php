@@ -1,11 +1,24 @@
 <?php
 ob_start();
-
-
-	function genVoteCode($nino){
-        //TODO
-		return "VOTECODE HERE.";
-	}
+    
+    //Function to remove all files from a directory.
+    function emptyDir($dir) {
+        if (is_dir($dir)) {
+            $scn = scandir($dir);
+            foreach ($scn as $files) {
+                if ($files !== '.') {
+                    if ($files !== '..') {
+                        if (!is_dir($dir . '/' . $files)) {
+                            unlink($dir . '/' . $files);
+                        } else {
+                            emptyDir($dir . '/' . $files);
+                            rmdir($dir . '/' . $files);
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     function createCard($row){
         //Extra info:
@@ -28,7 +41,7 @@ ob_start();
         $addr = $row['first_name'] . " " . $row['last_name'] . "\n" . $row['address'] . ",\n" . $row['city'] . ",\n" . $row['county']  . ",\n"   . $row['post_code'];
     
         //gen votecode
-        $votecode = genVoteCode($row['National Insurance Number']) . "\n\n\n";
+        $votecode = $row['vac'];
         
         
         //Address
@@ -60,10 +73,13 @@ ob_start();
     if (isset($_GET['count'])){ $count = $_GET['count']; }
     if ($count > 100) { $count = 100; }
 
-    //create the directory
-    if (!file_exists('pollingcards/')) {
-        mkdir('pollingcards', 0777, true);
+    //clean previous directory
+    if (file_exists('pollingcards/')) {
+        emptyDir('pollingcards');
+    }else{
+        mkdir('pollingcards', 0777, true); //make dir
     }
+    
 
 	$connection = mysqli_connect("csmysql.cs.cf.ac.uk","group8.2016","dafEvUth5","group8_2016") or die ("DB connection failed 1");
 	$query = "SELECT * FROM electoral_roll";
@@ -82,31 +98,31 @@ ob_start();
             createCard($row);
     }
 
-    //zip folder
-    $zip =  new ZipArchive();
-    $zip->open('pollingcards.zip', ZipArchive::CREATE | ZipArchive::OVERWRITE);
-    $rootPath = realpath('pollingcards');
 
-    $files = new RecursiveIteratorIterator(
-        new RecursiveDirectoryIterator($rootPath),
-        RecursiveIteratorIterator::LEAVES_ONLY
-    );
+    
 
-    foreach ($files as $name => $file) {
-        // Skip directories (they would be added automatically)
-        if (!$file->isDir()) {
-        // Get real and relative path for current file
-        $filePath = $file->getRealPath();
-        $relativePath = substr($filePath, strlen($rootPath) + 1);
+    if (isset($_GET['zip']) and $_GET['zip'] == '1'){  
+        //Create Zip archive of pollingcards folder and download
+        $zip =  new ZipArchive();
+        $zip->open('pollingcards.zip', ZipArchive::CREATE | ZipArchive::OVERWRITE);
+        $rootPath = realpath('pollingcards');
+    
+        $files = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($rootPath),
+            RecursiveIteratorIterator::LEAVES_ONLY
+        );
 
-        // Add current file to archive
-        $zip->addFile($filePath, $relativePath);
+        foreach ($files as $name => $file) {
+            if (!$file->isDir()) {
+                $filePath = $file->getRealPath();
+                $relativePath = substr($filePath, strlen($rootPath) + 1);
+
+                $zip->addFile($filePath, $relativePath);
+            }
         }
-    }
 
-    $zip->close();
+        $zip->close();
 
-    if (isset($_GET['zip']) and $_GET['zip'] == '1'){    
         $file_url = 'pollingcards.zip';
         header("Content-type: application/zip"); 
         header("Content-Disposition: attachment; filename=pollingcards.zip");
@@ -116,7 +132,6 @@ ob_start();
         readfile($file_url);
     }else{
         //checkout
-        echo "hello";
         session_start();
         $_SESSION['cardsCreated'] = 1;
         session_write_close();

@@ -2,6 +2,15 @@
 
 @section('security')
 
+<?php 
+    session_start();
+    
+    if (isset($_SESSION['codesCreated']) and $_SESSION['codesCreated'] == "1"){
+        echo "<script>alert('Voting Authentication Codes successfully created')</script>";
+    }
+
+    session_destroy();
+?>
 
 <div class="container col-md-8 col-md-offset-0">
     <div class="col-md-0 ">
@@ -12,14 +21,20 @@
             
             From here you can generate Voting Authentication Codes (VAC)
 
-            <form id="genVACs" method="POST" action="{{ url('NOTDONEYET') }}">
+            <form id="genVACs" action="{{ url('admin_home/vac/generate') }}">
                 <div class="form-group" style="padding-left:1em; padding-top: 1em;">
              
-                	<button type="submit" DISABLED class="btn btn-primary">Generate VACs</button>
+                	
                 
                 	<span class="help-block"><span class="text-danger">
                 	Warning: If you generate new VACs the previous ones will become invalid and you will need to resend polling cards to users.
                 	</span></span>
+
+                    <span class="help-block"><span class="text-warning">
+                    Note: This process will take a few seconds depending on the size of the electoral roll.
+                    </span></span>
+
+                    <button type="submit" class="btn btn-primary">Generate VACs</button>
 
                 </div>
             

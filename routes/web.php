@@ -56,8 +56,19 @@ Route::get('/admin_home/overview', function(){
 Route::get('/admin_home/pollingcards', function(){
     return view('polling_cards');
 });
+
+//Generate polling cards
 Route::get('/admin_home/pollingcards/generate', function(){
     return view('pdf/generatepollingcards');
+});
+
+//Generate VAC
+Route::get('/admin_home/vac/generate', function(){
+    return view('pdf/generatevac');
+});
+
+Route::get('/admin_home/votecodes', function(){
+    return view('votecodes');
 });
 Route::post('/admin_home/overview', function(Request $request){
   if(isset($_POST['Grant'])){

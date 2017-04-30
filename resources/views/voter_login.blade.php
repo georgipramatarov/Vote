@@ -19,7 +19,7 @@
       <!-- Form Name -->
       <legend style="text-align: center;">Enter your credentials below to register your vote.</legend>
 
-      <!-- Text input-->
+      <!-- NI number input-->
       <div class="form-group">
         <label class="col-md-4 control-label" for="natioalinsuranceno">National Insurance Number</label>
         <div class="col-md-4">
@@ -28,7 +28,7 @@
         </div>
       </div>
 
-      <!-- Text input-->
+      <!-- DOB input-->
       <div class="form-group">
         <label class="col-md-4 control-label" for="dateofbirth">Date Of Birth:</label>
         <div class="col-md-4">
@@ -37,7 +37,7 @@
         </div>
       </div>
 
-      <!-- Password input-->
+      <!-- VAC input-->
       <div class="form-group">
         <label class="col-md-4 control-label" for="votecode">Voting Code</label>
         <div class="col-md-4">
