@@ -84,21 +84,17 @@ Route::post('/admin_home/overview', function(Request $request){
   }
 });
 
-Route::get('/vote', 'Auth\LoginController@showLoginForm');
-Route::get('/candidates', 'CandidateController@index');
-Route::get('/candidates/{candidate}', 'CandidateController@showimg');
 Route::get('/admin_home/create-election', 'ElectionController@create');
 Route::post('/admin_home/create-election', 'ElectionController@store');
 
-
-
+// do we use this !!!!
 Route::get('/admin_home/create_election/noti',function(){
   $users=App\adminInfo::first();
   $electioncreate=App\createElection::first();
   $users->notify(new create_new_election($electioncreate));
 });
 
-Route::get('/admin_homepage', function(){
-  return view('admin_homepage');
 });
-});
+Route::get('/vote', 'Auth\LoginController@showLoginForm');
+Route::get('/candidates', 'CandidateController@index');
+Route::get('/candidates/{candidate}', 'CandidateController@showimg');
