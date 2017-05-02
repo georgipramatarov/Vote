@@ -41,8 +41,9 @@
 
     		@endforeach
 
+    		<!-- new election button -->
     			<div class="col-md-12" style="margin-bottom: 1em; margin-top: 1em; text-align: right">
-    				<a class="btn btn-primary" role="button" href="{{ url('admin_home/create-election') }}">Create New</a>
+    				<a class="btn btn-success" role="button" href="{{ url('admin_home/create-election') }}">Create New</a>
     			</div>
 
     		</div>
