@@ -28,10 +28,11 @@
  -              $today = date("Y-m-d H:i:s");
  -              $result = mysqli_query($con,$query);
  -              while($row = mysqli_fetch_assoc($result)){
- -              $date = $row["end_date"] . " 00:00:00";
+ -              $date = $row["close_date"] . " 00:00:00";
  -              if ($date > $today) {
  -              echo "<tr><td></td><td>". $row["election_name"] . "</td><td>" . $row["start_date"] . "</td><td>" . $row["end_date"] . "</td><td><ahref=\"".$row["results"] ."\">View Voting Results</a></td></tr>" 
- -              ;}else{ 
+ -              ;}else{  echo "<tr><td></td><td>". $row["election_name"] . "</td><td>" . $row["start_date"] . "</td><td>" . $row["end_date"] . "</td><td><ahref=\"".$row["results"] ."\">View Election</a></td></tr>" 
+ -              ;
  -              //this is if the election is the current one
  -              }
  -              }
