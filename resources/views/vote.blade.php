@@ -8,7 +8,9 @@
 
       <!-- Form Name -->
       <legend style="text-align: center;">--VOTING QUESTION HERE--</legend>
+        <h1>Current Elections
 
+        </h1>
     </fieldset>
    </form>
   </p1>

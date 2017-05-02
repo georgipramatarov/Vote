@@ -12,6 +12,6 @@ class Candidate extends Model
     "political_party" ,
     "info" ,
     "img",
-    "election_id",
-    "election_name"];
+    "electionID"
+  ];
 }

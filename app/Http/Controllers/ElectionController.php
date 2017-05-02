@@ -22,8 +22,7 @@ class ElectionController extends Controller
    			"close_date" => request("close_date")
    		]);
    		$num_cands = request("num_candidates");
-      $el = request("election_name");
-   		//$el_id = \DB::table("elections")->orderBy("created_at","desc")->first()->id;
+   		$el_id = \DB::table("elections")->orderBy("created_at","desc")->first()->id;
    		for ($i=0; $i < $num_cands; $i++) {
    			$j = $i + 1;
 
@@ -32,7 +31,7 @@ class ElectionController extends Controller
    				"political_party" => $request->cand_pparty[$j],
    				"info" => $request->cand_desc[$j],
    				"img" => $request->cand_img[$j],
-          "election_name" => $el,
+          "electionID" => $el_id,
    			]);
    		}
       return view('election');

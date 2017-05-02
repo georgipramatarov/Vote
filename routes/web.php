@@ -12,6 +12,14 @@ use Illuminate\Support\Facades\Input;
 |
 */
 
+Route::get('/enc',function(){
+    $el_users = DB::table('electoral_roll')->get();
+    foreach ($el_users as $u) {
+
+      DB::table('electoral_roll')->where('email', $u->email )->update(['email' => Hash::make($u->email)]);
+    }
+});
+
 Route::get('/', function () {
     return view('voter_login');
 });

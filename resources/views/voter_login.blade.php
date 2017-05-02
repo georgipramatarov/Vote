@@ -15,7 +15,7 @@
    <form class="form-horizontal" method="post" action="\">
      {{csrf_field()}}
     <fieldset>
-
+      {{csrf_field()}}
       <!-- Form Name -->
       <legend style="text-align: center;">Enter your credentials below to register your vote.</legend>
 
