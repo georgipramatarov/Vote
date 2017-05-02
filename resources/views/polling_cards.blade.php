@@ -5,7 +5,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
 <script type="text/javascript">
-	
+	//automatically enables limit text box
 	$(function(){
         $('#count').attr('disabled',true);
         $('#limit').click(function(){
@@ -16,7 +16,6 @@
         });
     });
   		
-
 </script>
 
 <?php 
@@ -70,29 +69,9 @@
             	</div>
       		</div>
 		</div>
-</div>
-
-<!-- generate one -->
-<div class="container col-md-8 col-md-offset-0">
-        <div class="col-md-0 ">
-            <div class="panel panel-default">
-                <div class="panel-heading" style="background-color:lightgray">Generate One Polling Card</div>
-                <div class="panel-body">
-                From here you can generate all of the polling cards for registered voters as PDF files.
-
-                <form id="genOneCard">
-                	<div class="form-group" style="padding-left:1em; padding-top: 1em;">
-                	<label for="nino">National Insurance Number:</label>
-                	<input type="text" disabled="true" name="nino">
-                	</div>
-
-                	<button method="post" type ="submit" class="btn btn-primary" name = "Grant" disabled="true">Generate</button>
-                </form>
-            </div>
-      </div>
-</div>
 
 
+<!-- Send polling Cards -->
 <div class="col-md-0 ">
     <div class="panel panel-default">
         <div class="panel-heading" style="background-color:lightgray">Send Polling Cards</div>

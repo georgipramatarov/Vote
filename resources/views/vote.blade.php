@@ -4,7 +4,7 @@
 
   <p1>
    <form class="form-horizontal" method="post" action="\">
-     {{csrf_field()}}
+     <!-- {{csrf_field()}} -->
     <fieldset>
 
 
@@ -28,7 +28,7 @@
             <img src="imgs/placeholder.png">
           @endif
         </td>
-        <td><button class="btn btn-primary">Vote</button></td>
+        <td><button disabled class="btn btn-primary">Vote</button></td>
       	</tr>
       @endforeach
       </table>

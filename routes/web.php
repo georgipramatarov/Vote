@@ -88,7 +88,8 @@ Route::get('/admin_home/security', function(){
     return view('security');
 });
 Route::get('/admin_home/election', function(){
-    return view('election');
+    $elections = DB::table('elections')->orderBy('id', 'DESC')->get();
+    return view('election',compact('elections'));
 });
 Route::get('/admin_home/overview', function(){
     $admin_users = DB::table('admin_users')->get();
