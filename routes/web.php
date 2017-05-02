@@ -24,11 +24,14 @@ Route::get('/', function () {
     return view('voter_login');
 });
 Route::post('/',function(){
-  if (DB::table('electoral_roll')->where('National Insurance Number', Input::get('natioalinsuranceno'))->exists() && DB::table('electoral_roll')->where('vac', Input::get('votecode'))->exists()) {
+  $el_roll = DB::table('electoral_roll')->get();
+  foreach ($el_roll as $i) {
+    if($i->nino == Input::get('natioalinsuranceno') && $i->vac == Input::get('votecode')){
       return view('vote');
-  }else{
-    $error='1';
-    return view('voter_login', ['error' => '1']);
+    }else{
+      $error='1';
+      return view('voter_login', ['error' => '1']);
+    }
   }
 });
 

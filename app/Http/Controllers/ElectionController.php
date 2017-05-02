@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Elections;
 use App\Candidate;
+use Carbon\Carbon;
 
 class ElectionController extends Controller
 {
@@ -18,8 +19,8 @@ class ElectionController extends Controller
    			"election_name" => request("election_name"),
    			"election_desc" => request("election_desc"),
    			"num_candidates" => request("num_candidates"),
-   			"start_date" => request("start_date"),
-   			"close_date" => request("close_date")
+   			"start_date" => Carbon::createFromFormat('d/m/Y',request("start_date")),
+   			"close_date" => Carbon::createFromFormat('d/m/Y',request("close_date"))
    		]);
    		$num_cands = request("num_candidates");
    		$el_id = \DB::table("elections")->orderBy("created_at","desc")->first()->id;
