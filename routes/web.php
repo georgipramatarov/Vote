@@ -40,6 +40,28 @@ Route::post('/',function(){
   }
 });
 
+/*
+//Auth
+Route::post('/',function(){
+  $nino = Input::get('nationalinsuranceno');
+  $vac = Input::get('votecode');
+  $dob = Input::get('dob-year') . "-" . Input::get('dob-month') . "-" . Input::get('dob-day');
+  $qry = "SELECT Count(*) as total FROM electoral_roll WHERE (
+    vac='$vac' AND 
+    nino='$nino' AND
+    dob='$dob');";
+    $val=DB::select($qry);
+
+    if ($val[0]->total == 1){
+      return view('vote');
+    }else{
+      $error='1';
+      return view('voter_login', ['error' => '1']);
+    }
+});
+
+*/
+
 Auth::routes();
 
 
