@@ -24,14 +24,19 @@ Route::get('/', function () {
     return view('voter_login');
 });
 Route::post('/',function(){
-  $el_roll = DB::table('electoral_roll')->get();
-  foreach ($el_roll as $i) {
-    if($i->nino == Input::get('natioalinsuranceno') && $i->vac == Input::get('votecode')){
+
+  $el_roll = DB::table('electoral_roll')->where('nino',Input::get('nationalinsuranceno'))->first();
+  $temp = Input::get('dob-year'). "-" .Input::get('dob-month'). "-" .Input::get('dob-day') ;
+  if($el_roll){
+    if($el_roll->vac == Input::get('votecode') && $el_roll->dob == $temp){
       return view('vote');
     }else{
       $error='1';
       return view('voter_login', ['error' => '1']);
-    }
+  }
+  }else{
+    $error='1';
+    return view('voter_login', ['error' => '1']);
   }
 });
 
