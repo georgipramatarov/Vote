@@ -29,13 +29,15 @@ Route::post('/',function(){
   $temp = Input::get('dob-year'). "-" .Input::get('dob-month'). "-" .Input::get('dob-day') ;
   if($el_roll){
     if($el_roll->vac == Input::get('votecode') && $el_roll->dob == $temp){
-      return view('vote');
+
+      $election = DB::table('elections')->orderBy('id', 'DESC')->first(); // get latest electionID 
+      $cands = DB::table('candidates')->where('electionID', $election->id)->inRandomOrder()->get(); //get appropriate candidates in random order
+
+      return view('vote', ['cands' => $cands, 'election' => $election]); //Random for fairness
     }else{
-      $error='1';
       return view('voter_login', ['error' => '1']);
   }
   }else{
-    $error='1';
     return view('voter_login', ['error' => '1']);
   }
 });
