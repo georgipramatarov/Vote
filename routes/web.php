@@ -16,7 +16,7 @@ Route::get('/', function () {
     return view('voter_login');
 });
 Route::post('/',function(){
-  if (DB::table('electoral_roll')->where('National Insurance Number', Input::get('natioalinsuranceno'))->exists()) {
+  if (DB::table('electoral_roll')->where('National Insurance Number', Input::get('natioalinsuranceno'))->exists() && DB::table('electoral_roll')->where('vac', Input::get('votecode'))->exists()) {
       return view('vote');
   }else{
     $error='1';
