@@ -24,7 +24,8 @@ Route::get('/', function () {
     return view('voter_login');
 });
 Route::post('/',function(){
-  if (DB::table('electoral_roll')->where('National Insurance Number', Input::get('natioalinsuranceno'))->exists() && DB::table('electoral_roll')->where('vac', Input::get('votecode'))->exists()) {
+  if (DB::table('electoral_roll')->where('National Insurance Number', Input::get('nationalinsuranceno'))->exists() && DB::table('electoral_roll')->where('vac', Input::get('votecode'))->exists() 
+    && DB::table('electoral_roll')->where('dob', Input::get('dob-year') . "-" . Input::get('dob-month') . "-" . Input::get('dob-day'))->exists()) {
       return view('vote');
   }else{
     $error='1';
