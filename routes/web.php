@@ -24,17 +24,19 @@ Route::get('/enc',function(){
 Route::get('/', function () {
     return view('voter_login');
 });
-Route::post('/',function(){
 
+//Vote authentication
+Route::post('/',function(){
   $el_roll = DB::table('electoral_roll')->where('nino',Input::get('nationalinsuranceno'))->first();
   $temp = Input::get('dob-year'). "-" .Input::get('dob-month'). "-" .Input::get('dob-day') ;
   if($el_roll){
 
     if($el_roll->vac == Input::get('votecode') && $el_roll->dob == $temp && $el_roll->voted != 1){
+
       $_SESSION["auth"]=1;
       	return redirect()->route('vote_page'); //Random for fairness
-
     }else{
+      //send back to login view with error
       return view('voter_login', ['error' => '1']);
   }
   }else{
@@ -43,15 +45,17 @@ Route::post('/',function(){
 });
 Route::get('vote_page',function(){
   if(isset($_SESSION["auth"])){
-  $elections = DB::table('elections')->where([
-    ['close_date', '>', Carbon\Carbon::now()],
-    ['start_date', '<=', Carbon\Carbon::now()]
-    ]);
-$election = $elections->orderBy('start_date')->first(); // get latest electionID
-$cands = DB::table('candidates')->where('electionID', $election->id)->inRandomOrder()->get(); //get appropriate candidates in random order
+    $elections = DB::table('elections')->where([
+      ['close_date', '>', Carbon\Carbon::now()],
+      ['start_date', '<=', Carbon\Carbon::now()]
+      ]);
+  $election = $elections->orderBy('start_date')->first(); // get latest electionID
+  //get appropriate candidates in random order
+  $cands = DB::table('candidates')->where('electionID', $election->id)->inRandomOrder()->get();
+  //get the demographic data for the voter
+  $voter = DB::table('electoral_roll')->where('nino', Input::get('nationalinsuranceno'))->first();
+  return view('vote', ['cands' => $cands, 'election' => $election, 'voter' => $voter]); //return view with data
 
-
-  return view('vote', ['cands' => $cands, 'election' => $election]);
 }else{
   abort(403, 'Unauthorized action.');
 }
