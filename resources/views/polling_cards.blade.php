@@ -18,16 +18,12 @@
   		
 </script>
 
-<?php 
-	session_start();
-	
-	if (isset($_SESSION['cardsCreated']) and $_SESSION['cardsCreated'] == "1"){
-		echo "<script>alert('Polling cards successfully created')</script>";
-		unset($_GET['cards']);
-	}
+@if (isset($_SESSION['cardsCreated']) && $_SESSION['cardsCreated']==1)
+    <Script>alert("Polling cards sucessfully generated.")</Script>
+    <?php unset($_SESSION['cardsCreated']) ?>
 
-	session_destroy();
-?>
+@endif
+
 
 <!-- Generate all/first x -->
 <div class="container col-md-8 col-md-offset-0">

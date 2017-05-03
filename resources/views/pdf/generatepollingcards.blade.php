@@ -40,6 +40,7 @@ ob_start();
         $votewarn = "Please keep this card safe. You will not be able to vote without your Voting Authentication Code.";
         $voteinfo = "To vote you will need to go to www.voteurl.com before the voting deadline. You will be asked for this code when you cast your ballot.";
         $votedeadline = "Voting Deadline: " . $election->close_date . " 11:59pm";
+        //$elecname = "Election: " . $election->name;
         $address = $row['first_name'] . " " . $row['last_name'] . "\n" . $row['address'] . ",\n" . $row['city'] . ",\n" . $row['county']  . ",\n"   . $row['post_code'];
         $votecode = $row['vac'];
 
@@ -154,10 +155,9 @@ ob_start();
         readfile($file_url);
     }else{
         //checkout
-        session_start();
-        $_SESSION['cardsCreated'] = 1;
-        session_write_close();
-        header('Location:' . $_SERVER['HTTP_REFERER']);
+         $_SESSION['cardsCreated'] = 1;
+         session_write_close();
+         header('Location:' . $_SERVER['HTTP_REFERER']);
     }
 
     exit();
