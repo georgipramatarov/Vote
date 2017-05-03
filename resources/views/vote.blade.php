@@ -10,10 +10,9 @@
 
       <!-- Form Name -->
       <legend style="text-align: center;">{{ $election->election_name }}</legend>
-      <div class="help-text" style="text-align: center;">Voting Deadline: {{ $election->close_date }} 23:59
-      <br>{{ Carbon\Carbon::parse($election->close_date)->diffForHumans()}}</div>
-      <br>
-      
+      <div class="help-text" style="text-align: center; margin-bottom: 1em;">Voting Deadline: {{ $election->close_date }} 23:59
+        <br>{{ Carbon\Carbon::parse($election->close_date)->diffForHumans()}}
+      </div>
       <table border="1" align="center">
       <!-- loop through candidates -->
       @foreach ($cands as $cand)
@@ -29,7 +28,7 @@
             <img src="imgs/placeholder.png">
           @endif
         </td>
-        <td><button disabled class="btn btn-primary">Vote</button></td>
+        <td><button class="btn btn-primary">Vote</button></td>
       	</tr>
       @endforeach
 

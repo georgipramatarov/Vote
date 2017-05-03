@@ -26,7 +26,7 @@
       </div>
 
       <!-- Text input-->
-      <div class="form-group">
+      <div class="form-group"> 
         <label class="col-md-4 control-label" for="start_date">Start Date</label>
         <div class="col-md-4">
         <input id="start_date" name="start_date" type="text" placeholder="DD/MM/YYYY" class="form-control input-md" required="">
