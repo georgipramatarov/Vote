@@ -44,6 +44,10 @@ return [
             'driver' => 'session',
             'provider' => 'admin_users',
         ],
+        'voter' => [
+            'driver' => 'session',
+            'provider' =>'electoral_roll',
+        ],
 
         'api' => [
             'driver' => 'token',
@@ -77,6 +81,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\AdminUser::class,
         ],
+        'electoral_roll' => [
+            'driver' => 'eloquent',
+            'model' => App\ElectoralRoll::class,
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
