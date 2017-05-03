@@ -4,7 +4,7 @@
 
   <p1>
    <form class="form-horizontal" method="post" action="\">
-     <!-- {{csrf_field()}} -->
+     {{csrf_field()}}
     <fieldset>
 
 

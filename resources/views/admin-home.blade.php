@@ -40,6 +40,13 @@
                 <div class="panel-body">Polling Cards</div>
               </a>
             </form>
+
+            <!-- Results -->
+            <form class="test">
+              <a href="{{ url('admin_home/results') }}" style="display: block; text-decoration:none;color: inherit;">
+                <div class="panel-body">Results</div>
+              </a>
+            </form>
               
 
 

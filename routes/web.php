@@ -122,6 +122,10 @@ Route::get('/admin_home/votecodes', function(){
     return view('votecodes');
 });
 
+Route::get('/admin_home/results', function(){
+    return view('viewresults');
+});
+
 Route::post('/admin_home/overview', function(Request $request){
   if(isset($_POST['Grant'])){
     DB::table('admin_users')->where('id', Input::get('id') )->update(['authorize' => 1]);
