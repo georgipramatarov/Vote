@@ -52,16 +52,20 @@
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
-                font-size: 12px;
+                font-size: 18px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
             }
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
+           
+            .subTitle{
+				font-size: 40px;
+			}
+			.subsubTitle{
+			12px;
+			margin-bottom: 30px;}
         </style>
     </head>
     <body>
@@ -70,6 +74,12 @@
                 <div class="title m-b-md">
                     Secure Vote
                 </div>
+                <div class="subTitle">
+					Your vote matters!
+				</div>
+				<div class="subsubTitle">
+					This is UK parliamentary general elections. Find out everything you need to know about voting in the UK.
+				</div>
                 @if (Route::has('login'))
                     <div class="links">
                         @if (Auth::check())
