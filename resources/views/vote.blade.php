@@ -21,14 +21,13 @@
         <td> {{ $cand->political_party }} </td>
         <td> 
           @if ( $cand->img ) 
-          {{ $path = "imgs/" . $cand->img }}
+           <img src="{{URL::asset('imgs/' . $cand->img )}}" alt="profile Pic">
 
-            <img src="{{ $path }}">
           @else
             <img src="imgs/placeholder.png">
           @endif
         </td>
-        <td><button class="btn btn-primary">Vote</button></td>
+        <td><button class="btn btn-primary" id="{{ $cand->id }}">Vote</button></td>
       	</tr>
       @endforeach
 

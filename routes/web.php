@@ -31,13 +31,11 @@ Route::post('/',function(){
   if($el_roll){
 
     if($el_roll->vac == Input::get('votecode') && $el_roll->dob == $temp && $el_roll->voted != 1){
-//<<<<<<< HEAD
         $elections = DB::table('elections')->where([
           ['close_date', '>', Carbon\Carbon::now()],
           ['start_date', '<=', Carbon\Carbon::now()]
           ]);
       $election = $elections->orderBy('start_date')->first(); // get latest electionID
-
       //get appropriate candidates in random order
       $cands = DB::table('candidates')->where('electionID', $election->id)->inRandomOrder()->get();
       //get the demographic data for the voter
