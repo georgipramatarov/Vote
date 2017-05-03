@@ -28,17 +28,43 @@ Route::post('/',function(){
   $el_roll = DB::table('electoral_roll')->where('nino',Input::get('nationalinsuranceno'))->first();
   $temp = Input::get('dob-year'). "-" .Input::get('dob-month'). "-" .Input::get('dob-day') ;
   if($el_roll){
+
     if($el_roll->vac == Input::get('votecode') && $el_roll->dob == $temp && $el_roll->voted != 1){
+
+      $election = DB::table('elections')->orderBy('id', 'DESC')->first(); // get latest electionID
+      $cands = DB::table('candidates')->where('electionID', $election->id)->inRandomOrder()->get(); //get appropriate candidates in random order
+
+      return view('vote', ['cands' => $cands, 'election' => $election]); //Random for fairness
+
+    }else{
+      return view('voter_login', ['error' => '1']);
+  }
+  }else{
+    return view('voter_login', ['error' => '1']);
+  }
+});
+
+/*
+//Auth
+Route::post('/',function(){
+  $nino = Input::get('nationalinsuranceno');
+  $vac = Input::get('votecode');
+  $dob = Input::get('dob-year') . "-" . Input::get('dob-month') . "-" . Input::get('dob-day');
+  $qry = "SELECT Count(*) as total FROM electoral_roll WHERE (
+    vac='$vac' AND
+    nino='$nino' AND
+    dob='$dob');";
+    $val=DB::select($qry);
+
+    if ($val[0]->total == 1){
       return view('vote');
     }else{
       $error='1';
       return view('voter_login', ['error' => '1']);
-  }
-  }else{
-    $error='1';
-    return view('voter_login', ['error' => '1']);
-  }
+    }
 });
+
+*/
 
 Auth::routes();
 
@@ -64,7 +90,8 @@ Route::get('/admin_home/security', function(){
     return view('security');
 });
 Route::get('/admin_home/election', function(){
-    return view('election');
+    $elections = DB::table('elections')->orderBy('id', 'DESC')->get();
+    return view('election',compact('elections'));
 });
 Route::get('/admin_home/overview', function(){
     $admin_users = DB::table('admin_users')->get();

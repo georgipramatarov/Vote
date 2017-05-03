@@ -1,10 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<!-- select box styles -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
-
 
 <script type="text/javascript">
 
@@ -13,7 +8,6 @@
     var nino = document.forms["login"]["nationalinsuranceno"].value.replace(/\s+/g, '');;
     var dob = document.forms["login"]["dateofbirth"].value.replace(/\s+/g, '');
     var vac = document.forms["login"]["votecode"].value.replace(/\s+/g, '');
-
 
   }
 
@@ -24,8 +18,11 @@
   }
 </script>
 
-
-  <p1>
+<style>
+.form-group {
+    width:100%;
+}
+</style>
    <form class="form-horizontal" name="login" method="post" action="\" onsubmit="return validateForm()">
      {{csrf_field()}}
     <fieldset>
@@ -34,7 +31,7 @@
       <legend style="text-align: center;">Enter your credentials below to cast your ballot</legend>
 
       <!-- NI number input-->
-      <div class="form-group">
+      <div class="form-group" style="width: 100%;">
         <label class="col-md-4 control-label" for="nationalinsuranceno">National Insurance Number</label>
         <div class="col-md-4">
         <input id="nationalinsuranceno" name="nationalinsuranceno" type="text" placeholder="National Insurance Number" class="form-control input-md" required="">
@@ -42,12 +39,11 @@
         <span id="nino-error"></span>
         </div>
       </div>
-
       <!-- DOB input-->
-      <div class="form-group">
+      <div class="form-group" style="width: 100%;">
         <label class="col-md-4 control-label" for="dateofbirth">Date Of Birth:</label>
 
-        <div class="col-md-4" style="margin-left: -1em;"> <!-- hack to get alignment -->
+        <div class="col-md-3" style="margin-left: -1em;"> <!-- hack to get alignment -->
         <span class="col-xs-4">
 
         <!-- Day -->
@@ -117,7 +113,7 @@
       </div>
 
       <!-- VAC input-->
-      <div class="form-group">
+      <div class="form-group" style="width: 100%;">
         <label class="col-md-4 control-label" for="votecode">Voting Code</label>
         <div class="col-md-4">
           <input id="votecode" name="votecode" type="text" placeholder="Voting Code" class="form-control input-md" required="">
@@ -127,7 +123,7 @@
 
 
       <!-- Button -->
-      <div class="form-group">
+      <div class="form-group" style="width: 100%;">
         <label class="col-md-4 control-label" for="login"></label>
         <div class="col-md-4">
           <button id="login" name="login" class="btn btn-primary">Log in</button>
@@ -140,5 +136,5 @@
       @endif
     </fieldset>
    </form>
-  </p1>
+
 @endsection

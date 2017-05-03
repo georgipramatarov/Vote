@@ -16,7 +16,7 @@
         <label class="col-md-4 control-label" for="election_name">Election Title</label>
         <div class="col-md-5">
         <input id="election_name" name="election_name" type="text" placeholder="Election title" class="form-control input-md" required="">
-        <span class="help-block">help text goes here</span>
+        <span class="help-block">Short description of the candidate to be displayed on the voting page.</span>
         </div>
       </div>
 
@@ -25,7 +25,7 @@
         <label class="col-md-4 control-label" for="election_desc">Election Description</label>
         <div class="col-md-5">
         <textarea id="election_desc" name="election_desc" type="text" placeholder="Election Description" class="form-control input-md" required=""></textarea>
-        <span class="help-block">help text goes here</span>
+        <span class="help-block">This will be shown at the top of the voting page.</span>
         </div>
       </div>
 
