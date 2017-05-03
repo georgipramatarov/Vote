@@ -28,7 +28,7 @@ Route::post('/',function(){
   $el_roll = DB::table('electoral_roll')->where('nino',Input::get('nationalinsuranceno'))->first();
   $temp = Input::get('dob-year'). "-" .Input::get('dob-month'). "-" .Input::get('dob-day') ;
   if($el_roll){
-    if($el_roll->vac == Input::get('votecode') && $el_roll->dob == $temp){
+    if($el_roll->vac == Input::get('votecode') && $el_roll->dob == $temp && $el_roll->voted != 1){
       return view('vote');
     }else{
       $error='1';
