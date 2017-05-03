@@ -23,7 +23,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color:lightgray">Admins Awaiting Approval</div>
                 <div class="panel-body">
-                  <span class="help-text">Approve or Deny new admin requests here.</span>
+                  <span class="help-text"><strong>Approve or Deny new admin requests here.</strong></span>
                 </div>
 
 

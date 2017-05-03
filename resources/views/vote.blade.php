@@ -10,7 +10,8 @@
 
       <!-- Form Name -->
       <legend style="text-align: center;">{{ $election->election_name }}</legend>
-      <div class="help-text" style="text-align: center;">Voting Deadline: {{ $election->close_date }} 23:59</div>
+      <div class="help-text" style="text-align: center;">Voting Deadline: {{ $election->close_date }} 23:59
+      <br>{{ Carbon\Carbon::parse($election->close_date)->diffForHumans()}}</div>
       <br>
       
       <table border="1" align="center">
@@ -31,6 +32,11 @@
         <td><button disabled class="btn btn-primary">Vote</button></td>
       	</tr>
       @endforeach
+
+<!-- Voter demo 
+  $voter->dob
+  $voter->gender
+-->
       </table>
     </fieldset>
    </form>

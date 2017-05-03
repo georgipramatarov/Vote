@@ -23,8 +23,9 @@ Route::get('/enc',function(){
 Route::get('/', function () {
     return view('voter_login');
 });
-Route::post('/',function(){
 
+//Vote authentication
+Route::post('/',function(){
   $el_roll = DB::table('electoral_roll')->where('nino',Input::get('nationalinsuranceno'))->first();
   $temp = Input::get('dob-year'). "-" .Input::get('dob-month'). "-" .Input::get('dob-day') ;
   if($el_roll){
@@ -32,11 +33,15 @@ Route::post('/',function(){
     if($el_roll->vac == Input::get('votecode') && $el_roll->dob == $temp && $el_roll->voted != 1){
 
       $election = DB::table('elections')->orderBy('id', 'DESC')->first(); // get latest electionID
-      $cands = DB::table('candidates')->where('electionID', $election->id)->inRandomOrder()->get(); //get appropriate candidates in random order
 
-      return view('vote', ['cands' => $cands, 'election' => $election]); //Random for fairness
+      //get appropriate candidates in random order
+      $cands = DB::table('candidates')->where('electionID', $election->id)->inRandomOrder()->get();
+      //get the demographic data for the voter
+      $voter = DB::table('electoral_roll')->where('nino', Input::get('nationalinsuranceno'))->first(); 
+      return view('vote', ['cands' => $cands, 'election' => $election, 'voter' => $voter]); //return view with data
 
     }else{
+      //send back to login view with error
       return view('voter_login', ['error' => '1']);
   }
   }else{
