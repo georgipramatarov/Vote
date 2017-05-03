@@ -12,7 +12,7 @@
       <legend style="text-align: center;">{{ $election->election_name }}</legend>
       <div class="help-text" style="text-align: center;">Voting Deadline: {{ $election->close_date }} 23:59</div>
       <br>
-      
+      {{Carbon\Carbon::now()}}
       <table border="1" align="center">
       <!-- loop through candidates -->
       @foreach ($cands as $cand)
@@ -28,7 +28,7 @@
             <img src="imgs/placeholder.png">
           @endif
         </td>
-        <td><button disabled class="btn btn-primary">Vote</button></td>
+        <td><button class="btn btn-primary">Vote</button></td>
       	</tr>
       @endforeach
       </table>
