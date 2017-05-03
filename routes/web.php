@@ -1,6 +1,7 @@
 <?php
 use App\Notifications\create_new_election;
 use Illuminate\Support\Facades\Input;
+session_start();
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,17 +32,9 @@ Route::post('/',function(){
   if($el_roll){
 
     if($el_roll->vac == Input::get('votecode') && $el_roll->dob == $temp && $el_roll->voted != 1){
-        $elections = DB::table('elections')->where([
-          ['close_date', '>', Carbon\Carbon::now()],
-          ['start_date', '<=', Carbon\Carbon::now()]
-          ]);
-      $election = $elections->orderBy('start_date')->first(); // get latest electionID
-      //get appropriate candidates in random order
-      $cands = DB::table('candidates')->where('electionID', $election->id)->inRandomOrder()->get();
-      //get the demographic data for the voter
-      $voter = DB::table('electoral_roll')->where('nino', Input::get('nationalinsuranceno'))->first(); 
-      return view('vote', ['cands' => $cands, 'election' => $election, 'voter' => $voter]); //return view with data
 
+      $_SESSION["auth"]=1;
+      	return redirect()->route('vote_page'); //Random for fairness
     }else{
       //send back to login view with error
       return view('voter_login', ['error' => '1']);
@@ -50,7 +43,23 @@ Route::post('/',function(){
     return view('voter_login', ['error' => '1']);
   }
 });
+Route::get('vote_page',function(){
+  if(isset($_SESSION["auth"])){
+    $elections = DB::table('elections')->where([
+      ['close_date', '>', Carbon\Carbon::now()],
+      ['start_date', '<=', Carbon\Carbon::now()]
+      ]);
+  $election = $elections->orderBy('start_date')->first(); // get latest electionID
+  //get appropriate candidates in random order
+  $cands = DB::table('candidates')->where('electionID', $election->id)->inRandomOrder()->get();
+  //get the demographic data for the voter
+  $voter = DB::table('electoral_roll')->where('nino', Input::get('nationalinsuranceno'))->first();
+  return view('vote', ['cands' => $cands, 'election' => $election, 'voter' => $voter]); //return view with data
 
+}else{
+  abort(403, 'Unauthorized action.');
+}
+})->name('vote_page');
 /*
 //Auth
 Route::post('/',function(){

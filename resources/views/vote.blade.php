@@ -3,8 +3,8 @@
 <div class="col-md-0 " style="width:50%; margin:auto;">
 
   <p1>
-   <form class="form-horizontal" method="post" action="\">
-     {{csrf_field()}}
+   <form class="form-horizontal" method="post" action="\vote_page">
+      {{csrf_field()}}
     <fieldset>
 
 
@@ -19,9 +19,11 @@
       	<tr>
       	<td > {{ $cand->name }} </td>
         <td> {{ $cand->political_party }} </td>
-        <td> 
-          @if ( $cand->img ) 
+
+        <td>
+          @if ( $cand->img )
            <img src="{{URL::asset('imgs/' . $cand->img )}}" alt="profile Pic">
+
 
           @else
             <img src="imgs/placeholder.png">
@@ -31,7 +33,7 @@
       	</tr>
       @endforeach
 
-<!-- Voter demo 
+<!-- Voter demo
   $voter->dob
   $voter->gender
 -->
