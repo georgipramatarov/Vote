@@ -36,7 +36,6 @@
  -              //this is if the election is the current one
  -              }
  -              }
- -              }
  -
  -              ?>
           </tbody>
