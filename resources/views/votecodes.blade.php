@@ -2,15 +2,11 @@
 
 @section('security')
 
-<?php 
-    session_start();
-    
-    if (isset($_SESSION['codesCreated']) and $_SESSION['codesCreated'] == "1"){
-        echo "<script>alert('Voting Authentication Codes successfully created')</script>";
-    }
-
-    session_destroy();
-?>
+<!-- Confirmation box -->
+@if (isset($_SESSION['codesCreated']) && $_SESSION['codesCreated']==1)
+    <Script>alert("Voting Authentication Codes successfully created")</Script>
+    <?php unset($_SESSION['codesCreated']) ?>
+@endif
 
 <div class="container col-md-8 col-md-offset-0">
     <div class="col-md-0 ">

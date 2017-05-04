@@ -84,7 +84,17 @@ ob_start();
 
 
     $count= 101;
-    if (isset($_GET['count'])){ $count = $_GET['count']; }
+    if (isset($_GET['count'])){ 
+        $count = $_GET['count']; 
+        if (!is_int($count)){
+            $_SESSION['cardError'] = 2;
+            session_write_close();
+            header('Location:' . $_SERVER['HTTP_REFERER']);
+            exit();
+        }
+    }
+    
+
     if ($count > 100) { $count = 100; }
 
     //clean previous directory
@@ -118,11 +128,8 @@ ob_start();
             createCard($row, $election);
     }
 
-
     
-    //
     // Polling cards generated
-    //
 
     if (isset($_GET['zip']) and $_GET['zip'] == '1'){  
         //Create Zip archive of pollingcards folder and download

@@ -113,24 +113,27 @@ Route::get('/admin_home/overview', function(){
     $admin_users = DB::table('admin_users')->get();
     return view('overview',compact('admin_users'));
 });
+
+//Generate polling cards
 Route::get('/admin_home/pollingcards', function(){
     return view('polling_cards');
 });
-
-//Generate polling cards
 Route::get('/admin_home/pollingcards/generate', function(){
     return view('pdf/generatepollingcards');
+});
+Route::get('/admin_home/pollingcards/generateone', function(){
+    return view('pdf/generatesinglecard');
 });
 
 //Generate VAC
 Route::get('/admin_home/vac/generate', function(){
     return view('pdf/generatevac');
 });
-
 Route::get('/admin_home/votecodes', function(){
     return view('votecodes');
 });
 
+//view results
 Route::get('/admin_home/results', function(){
     return view('viewresults');
 });

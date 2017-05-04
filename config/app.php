@@ -166,6 +166,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
 
 
+
         /*
          * Package Service Providers...
          */
@@ -179,6 +180,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        //Charts
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
 
     ],
 
@@ -230,6 +234,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Google2FA' => PragmaRX\Google2FA\Vendor\Laravel\Facade::class,
         'Form' => Collective\Html\FormFacade::class,
+        'Charts' => ConsoleTVs\Charts\Facades\Charts::class, //charts
 
     ],
 

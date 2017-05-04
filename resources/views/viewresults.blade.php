@@ -9,13 +9,14 @@
             <div class="panel-heading" style="background-color:lightgray">Election Results</div>
             
             <div class="panel-body">
-            
-            
+            {!! Charts::assets() !!}
+            {!! $chart->render() !!}
 
         </div>
 
     </div>
 
 </div>
+
 
 @endsection
