@@ -35,6 +35,7 @@ class ElectionController extends Controller
           "electionID" => $el_id,
    			]);
    		}
-      return view('election');
+      $elections = \DB::table("elections")->orderBy("created_at","desc")->get();
+      return view('election', ['elections' => $elections]);
    	}
 }
