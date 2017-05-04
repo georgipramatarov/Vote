@@ -28,9 +28,9 @@ class ValidateSecretRequest extends Request
         $factory->extend(
             'valid',
             function ($attribute, $value, $parameters, $validator) {
-                $secret = Crypt::decrypt($this->user->google2fa_secret);
+                $secret2FA = Crypt::decrypt($this->user->google2fa_secret);
 
-                return Google2FA::verifyKey($secret, $value);
+                return Google2FA::verifyKey($secret2FA, $value);
             },
             'Provided token is not valid'
         );

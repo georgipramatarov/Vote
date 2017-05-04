@@ -19,7 +19,7 @@ Route::get('/enc',function(){
     $el_users = DB::table('electoral_roll')->get();
     foreach ($el_users as $u) {
 
-      DB::table('electoral_roll')->where('email', $u->email )->update(['email' => Hash::make($u->email)]);
+      DB::table('electoral_roll')->where('nino', 'BM741369C' )->update(['nino' => Hash::make($u->nino)]);
     }
 });
 
@@ -31,6 +31,7 @@ Route::get('/', function () {
 //Vote authentication
 Route::post('/',function(){
   $el_roll = DB::table('electoral_roll')->where('nino',Input::get('nationalinsuranceno'))->first();
+  dd(Crypt::decrypt($el_roll->nino));
   $temp = Input::get('dob-year'). "-" .Input::get('dob-month'). "-" .Input::get('dob-day') ;
   if($el_roll){
 
@@ -68,13 +69,13 @@ Route::get('vote_page',function(){
 
 //Cast vote
 Route::post('vote_page',function(){
-  if (! Session::has('vot')) { 
-    abort('403', 'Unauthorized Action'); 
+  if (! Session::has('vot')) {
+    abort('403', 'Unauthorized Action');
   }
   //Voter record for demographic and updating electoral roll
     $voterID = Session::get('vot')->id;
     $voter = DB::table('electoral_roll')->where('id',$voterID)->first();
-    
+
     //Get election ID
     $electionID = DB::table('elections')->where([
       ['close_date', '>', Carbon\Carbon::now()],
@@ -207,4 +208,3 @@ Route::get('/candidates/{candidate}', 'CandidateController@showimg');
 Route::get('vote_complete', function(){
     return view('vote_complete');
 })->name('vote_complete');
-

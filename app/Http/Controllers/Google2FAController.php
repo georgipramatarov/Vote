@@ -31,20 +31,20 @@ class Google2FAController extends Controller
      */
     public function enableTwoFactor(Request $request)
     {
-        $secret = $this->generateSecret();
+        $secret2FA = $this->generateSecret();
         $admin_user = $request->user();
-        $admin_user->google2fa_secret = Crypt::encrypt($secret);
+        $admin_user->google2fa_secret = Crypt::encrypt($secret2FA);
         $admin_user->save();
 
-        $imageDataUri = Google2FA::getQRCodeGoogleUrl(
+        $QR = Google2FA::getQRCodeGoogleUrl(
             $request->getHttpHost(),
             $admin_user->email,
-            $secret,
+            $secret2FA,
             200
         );
 
-        return view('2fa/enableTwoFactor', ['image' => $imageDataUri,
-            'secret' => $secret]);
+        return view('2fa/enableTwoFactor', ['image' => $QR,
+            'secret' => $secret2FA]);
     }
 
     /**

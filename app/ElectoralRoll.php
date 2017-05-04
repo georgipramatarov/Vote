@@ -3,11 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\AuthenticatesVoter;
+use App\Traits\Encrypt;
 
 class ElectoralRoll extends Model
 {
-  use AuthenticatesVoter;
+  use Encrypt;
     protected $table = "electoral_roll";
     protected $fillable = [
     	"id",
