@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
+{!! Session::forget('vot'); !!}
 <script type="text/javascript">
 
   function validateForm(){

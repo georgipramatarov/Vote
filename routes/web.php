@@ -27,6 +27,7 @@ Route::get('/', function () {
     return view('voter_login');
 });
 
+
 //Vote authentication
 Route::post('/',function(){
   $el_roll = DB::table('electoral_roll')->where('nino',Input::get('nationalinsuranceno'))->first();
@@ -65,14 +66,36 @@ Route::get('vote_page',function(){
 }
 })->name('vote_page');
 
+//Cast vote
 Route::post('vote_page',function(){
-    $voter = DB::table('electoral_roll')->where('id',Input::get('voter_id'))->first();
+  if (! Session::has('vot')) { 
+    abort('403', 'Unauthorized Action'); 
+  }
+  //Voter record for demographic and updating electoral roll
+    $voterID = Session::get('vot')->id;
+    $voter = DB::table('electoral_roll')->where('id',$voterID)->first();
+    
+    //Get election ID
+    $electionID = DB::table('elections')->where([
+      ['close_date', '>', Carbon\Carbon::now()],
+      ['start_date', '<=', Carbon\Carbon::now()]
+      ])->orderBy('start_date')->first();
+
     Votes::create([
       'cand_id' => Input::get('cand_id'),
       'Gender' => $voter->gender,
       'county' => $voter->county,
-      'election_id' => Input::get('election_id'),
+      'election_id' => $electionID->id,
     ]);
+
+    //Update electoral roll
+    DB::table('electoral_roll')->where('id', $voterID )->update(['voted' => 1]);
+
+    //forget session
+    Session::forget('vot');
+
+    //send to votecomplete page
+    return redirect()->route('vote_complete');
 
 });
 /*
@@ -167,6 +190,7 @@ Route::post('/admin_home/overview', function(Request $request){
 Route::get('/admin_home/create-election', 'ElectionController@create');
 Route::post('/admin_home/create-election', 'ElectionController@store');
 
+
 // do we use this !!!!
 Route::get('/admin_home/create_election/noti',function(){
   $users=App\adminInfo::first();
@@ -178,3 +202,9 @@ Route::get('/admin_home/create_election/noti',function(){
 Route::get('/vote', 'Auth\LoginController@showLoginForm');
 Route::get('/candidates', 'CandidateController@index');
 Route::get('/candidates/{candidate}', 'CandidateController@showimg');
+
+//Vote complete
+Route::get('vote_complete', function(){
+    return view('vote_complete');
+})->name('vote_complete');
+
