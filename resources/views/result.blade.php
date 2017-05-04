@@ -19,7 +19,7 @@
                 ?>
                 <table width="70%"> 
                 	<tr>
-                		<td width="40%"><h3>Declared Winner:</h3></td>
+                		<td width="40%"><h3>Leader:</h3></td>
                 		<td width="60%"><h3> {{ $winner->name }}, {{$winner->political_party}}  </h3></td>
                 	</tr>
                 </table>
@@ -38,17 +38,19 @@
                 <!-- Total votes For each candidate -->
                 <?php
                 	$results = \DB::table('votes')->select(DB::raw('count(cand_id) as count, cand_id as cand_id'))
-                		->groupBy('cand_id')->get() ?>
+                		->groupBy('cand_id')->get(); 
+                        ?>
 
-                	<table border='0' width="50%">
+                	<table border='0' width="90%">
                 	<tr>
                 		<th colspan="3"><h4>Vote breakdown for each candidate:</h4></th>
                 	</tr>
                 	<tr>
                 		<th>Candidate</th>
                 		<th>Party</th>
-                		<th>Votes</th>
-
+                		<th>Total Votes</th>
+                        <th></th>
+                        <th></th>
                 	</tr>
 
                 	@foreach ($results as $res)
@@ -57,16 +59,18 @@
                 			->where('id',$res->cand_id)->first();
                 	?>
                 	<tr>
-                		<td width="40%">{{ $cand->name }} </td>
-                		<td width="40%"> {{ $cand->political_party }} </td>
-                  		<td width="20%">{{ $res->count }}</td>
+                		<td>{{ $cand->name }} </td>
+                		<td> {{ $cand->political_party }} </td>
+                  		<td>{{ $res->count }}</td>
+                        <td></td>
+                        <td></td>
                   	</tr>
                 	@endforeach
 
                 	</table>
 
 
-
+                    <!-- Charts -->
 
                 <legend style="margin-top:1em;">Charts:</legend>
                 {!! $chartAge->render() !!}

@@ -48,7 +48,6 @@ class ChartController extends Controller
       ->colors(['blue', 'red', 'green', 'yellow']);
 
 
-    //Vote Count
 
 
      return view('result',['chartCounty'=>$chartCounty,'chartGender'=>$chartGender, 'chartAge'=>$chartAge]);
