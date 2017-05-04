@@ -8,8 +8,10 @@ class Votes extends Model
 {
     protected $fillable = [
     	"cand_id",
+      "election_id",
     	"numVotes",
     	"Gender",
-    	"age"
+    	"age",
+      "county"
     ];
 }

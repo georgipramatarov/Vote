@@ -29,7 +29,10 @@
             <img src="imgs/placeholder.png">
           @endif
         </td>
-        <td><button class="btn btn-primary" id="{{ $cand->id }}">Vote</button></td>
+        {{ Form::hidden('cand_id', $cand->id) }}
+        {{ Form::hidden('election_id', $election->id) }}
+        {{ Form::hidden('voter_id', $voter->id)}}
+        <td><button class="btn btn-primary" id="{{ $cand->id }}" value = "1">Vote</button></td>
       	</tr>
       @endforeach
 
