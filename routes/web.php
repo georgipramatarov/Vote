@@ -74,6 +74,7 @@ Route::post('vote_page',function(){
   //Voter record for demographic and updating electoral roll
     $voterID = Session::get('vot')->id;
     $voter = DB::table('electoral_roll')->where('id',$voterID)->first();
+    $age = date("Y") - date("Y", strtotime($voter->dob));
     
     //Get election ID
     $electionID = DB::table('elections')->where([
@@ -85,6 +86,7 @@ Route::post('vote_page',function(){
       'cand_id' => Input::get('cand_id'),
       'Gender' => $voter->gender,
       'county' => $voter->county,
+      'age' => $age,
       'election_id' => $electionID->id,
     ]);
 
