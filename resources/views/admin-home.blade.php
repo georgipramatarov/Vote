@@ -12,14 +12,14 @@
                   <div class="panel-body">Admins</div>
                 </a>
               </form>
-            
+
             <!-- Security -->
             <form class="test">
               <a href="{{ url('admin_home/security') }}" style="text-decoration:none;color: inherit;">
                 <div class="panel-body">Security</div>
-              </a>  
+              </a>
             </form>
-            
+
             <!-- Elections -->
             <form class="test">
               <a href="{{ url('admin_home/election') }}" style="display: block; text-decoration:none;color: inherit;">
@@ -33,7 +33,7 @@
                 <div class="panel-body">Voting Authentication Codes</div>
               </a>
             </form>
-            
+
             <!-- Polling Cards -->
             <form class="test">
               <a href="{{ url('admin_home/pollingcards') }}" style="display: block; text-decoration:none;color: inherit;">
@@ -47,7 +47,7 @@
                 <div class="panel-body">Results</div>
               </a>
             </form>
-              
+
 
 
 

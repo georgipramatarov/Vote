@@ -36,7 +36,8 @@ Route::post('/',function(){
     if($el_roll->vac == Input::get('votecode') && $el_roll->dob == $temp && $el_roll->voted != 1){
 
       $_SESSION["auth"]=1;
-      	return redirect()->route('vote_page')->with('vot',$el_roll); //Random for fairness
+      Session::put('vot',$el_roll);
+      	return redirect()->route('vote_page'); //Random for fairness
     }else{
       //send back to login view with error
       return view('voter_login', ['error' => '1']);
@@ -128,6 +129,7 @@ Route::get('/admin_home/overview', function(){
     return view('overview',compact('admin_users'));
 });
 
+
 //Generate polling cards
 Route::get('/admin_home/pollingcards', function(){
     return view('polling_cards');
@@ -148,9 +150,7 @@ Route::get('/admin_home/votecodes', function(){
 });
 
 //view results
-Route::get('/admin_home/results', function(){
-    return view('viewresults');
-});
+Route::get('admin_home/results','ChartController@chart');
 
 Route::post('/admin_home/overview', function(Request $request){
   if(isset($_POST['Grant'])){

@@ -41,6 +41,7 @@
             }
         }
     </script>
+
 </head>
 <body>
     <div id="app">
@@ -99,6 +100,7 @@
           @yield('enable_2FA')
           @yield('content-create-election')
           @yield('election-home')
+          @yield('charts')
 
     </div>
 
