@@ -31,7 +31,6 @@ Route::get('/', function () {
 //Vote authentication
 Route::post('/',function(){
   $el_roll = DB::table('electoral_roll')->where('nino',Input::get('nationalinsuranceno'))->first();
-  dd(Crypt::decrypt($el_roll->nino));
   $temp = Input::get('dob-year'). "-" .Input::get('dob-month'). "-" .Input::get('dob-day') ;
   if($el_roll){
 

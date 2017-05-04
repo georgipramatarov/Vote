@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-{!! Session::forget('vot'); !!}
-
       <!-- Form Title -->
       
       <div style="text-align: center; margin-top: 3em;">
