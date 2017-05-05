@@ -40,9 +40,7 @@ Route::get('/', function () {
 Route::post('/',function(){
   $temp = Input::get('dob-year'). "-" .Input::get('dob-month'). "-" .Input::get('dob-day') ;
   $el_roll = DB::table('electoral_roll')->where('dob',$temp)->first();
-  var_dump($el_roll);
-  var_dump(Input::get('nationalinsuranceno'));
-  var_dump(Input::get('votecode'));
+
 
   if($el_roll){
 //Crypt::decrypt($el_roll->vac) == Input::get('votecode') &&
