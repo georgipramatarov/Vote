@@ -85,12 +85,13 @@ ob_start();
 
     $count= 101;
     if (isset($_GET['count'])){ 
-        $count = $_GET['count']; 
-        if (!is_int($count)){
+        if (!(int)$_GET['count']){
             $_SESSION['cardError'] = 2;
             session_write_close();
             header('Location:' . $_SERVER['HTTP_REFERER']);
             exit();
+        }else{
+            $count = (int)$_GET['count']; 
         }
     }
     
