@@ -13,7 +13,7 @@
     			<div class="panel-body col-md-4">Name</div>
                 <div class="panel-body col-md-3">Starts</div>
                 <div class="panel-body col-md-2">Ends</div>
-                <div class="panel-body col-md-1">Options</div>
+                <div class="panel-body col-md-1"></div>
 
               </strong>
     		@endif
@@ -25,17 +25,6 @@
 
                   <!-- buttons -->
                   <div class="panel-body col-md-2">
-                  <div class="btn-group">
-                  	<!-- Edit -->
-                  	<a href="#" class="btn btn-primary btn-sm disabled">
-          				Edit
-			        </a>
-
-			       <!-- delete -->
-			        <a href="#" class="btn btn-danger btn-sm disabled">
-          				Delete
-			        </a>
-			        </div>
                   </div>
 
     		@endforeach
