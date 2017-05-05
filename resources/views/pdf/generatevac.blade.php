@@ -22,7 +22,7 @@ ob_start();
 	$count = 1;
 	
 	while ($count <=  $result['count']){
-		$vac = genCode();
+		$vac = Crypt::encrypt(genCode());
 		$query = "UPDATE `electoral_roll` SET `vac`='$vac' WHERE `id`=$count";
 
 		if ( ! mysqli_query($connection, $query)) {
@@ -33,9 +33,7 @@ ob_start();
 	}
 
 	//Done, checkout
-	session_start();
     $_SESSION['codesCreated'] = 1;
-    session_write_close();
     header('Location:' . $_SERVER['HTTP_REFERER']);
     exit();
 	
