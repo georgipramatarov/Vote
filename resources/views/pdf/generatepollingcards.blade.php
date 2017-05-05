@@ -62,9 +62,9 @@ ob_start();
         $pdf->Cell(90,10,$votecode,1,'L',0);
         $pdf->SetFont('Helvetica','',14); //set font back
 
-        //Postage
+        //top right box
         $pdf->SetXY($x + 130, $y);
-        $pdf->Cell(60,30,"POSTAGE STAMP",1,0, 'C',0);
+        $pdf->Cell(60,30,"KEEP THIS CARD SAFE",1,0, 'C',0);
 
         //election
         $pdf->SetXY($x, $y+70);
