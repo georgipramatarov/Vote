@@ -109,7 +109,7 @@
     <div class="panel panel-default">
         <div class="panel-heading" style="background-color:lightgray">Send Polling Cards</div>
         <div class="panel-body">
-            From here you can send polling cards out to registered voters. For the prototype polling cards are sent via Email.
+            From here you can send polling cards out to registered voters.
             <div class="form-group">
         	   <button method="post" type ="submit" class="btn btn-primary" disabled="true" name = "Grant">Send</button>
             </div>
