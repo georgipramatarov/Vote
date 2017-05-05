@@ -22,7 +22,7 @@ ob_start();
 
     function createCard($row, $election){
  
-        $pdf_name = "pollingcards/" . $row['nino'] . ".pdf"; // where to save the files
+        $pdf_name = "pollingcards/" . Crypt::decrypt($row['nino']) . ".pdf"; // where to save the files
         $pdf= new FPDF('L', 'mm', 'A5');
         
         //setup PDF
@@ -42,7 +42,7 @@ ob_start();
         $votedeadline = "Voting Deadline: " . $election->close_date . " 11:59pm";
         //$elecname = "Election: " . $election->name;
         $address = $row['first_name'] . " " . $row['last_name'] . "\n" . $row['address'] . ",\n" . $row['city'] . ",\n" . $row['county']  . ",\n"   . $row['post_code'];
-        $votecode = $row['vac'];
+        $votecode = Crypt::decrypt($row['vac']);
 
         
         
