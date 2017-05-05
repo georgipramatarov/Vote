@@ -16,10 +16,10 @@ session_start();
 */
 
 Route::get('/enc',function(){
-    $el_users = DB::table('electoral_roll')->get();
-    foreach ($el_users as $key) {
-      DB::table('electoral_roll')->where('id',$key->id)->update(['nino' => Crypt::encrypt($key->nino)]);
-    }
+    $el_users = DB::table('electoral_roll')->where('id',1)->first();
+    //foreach ($el_users as $key) {
+      DB::table('electoral_roll')->where('id',1)->update(['nino' => Hash::d($el_users->nino)]);
+    //}
 
 
 
@@ -40,6 +40,9 @@ Route::get('/', function () {
 Route::post('/',function(){
   $temp = Input::get('dob-year'). "-" .Input::get('dob-month'). "-" .Input::get('dob-day') ;
   $el_roll = DB::table('electoral_roll')->where('dob',$temp)->first();
+  var_dump($el_roll);
+  var_dump(Input::get('nationalinsuranceno'));
+  var_dump(Input::get('votecode'));
 
   if($el_roll){
 //Crypt::decrypt($el_roll->vac) == Input::get('votecode') &&

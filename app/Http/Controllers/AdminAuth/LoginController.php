@@ -30,7 +30,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin_home';
+    protected $redirectTo = '/admin_home/overview';
 
     /**
      * Create a new controller instance.
@@ -91,7 +91,7 @@ class LoginController extends Controller
             $request->session()->put('2fa:user:id', $user->id);
             return redirect('2fa/validate');
         }
-        return redirect('admin_home');
+        return redirect('admin_home/overview');
     }
 
     /**
