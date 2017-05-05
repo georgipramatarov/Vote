@@ -17,11 +17,19 @@ session_start();
 
 Route::get('/enc',function(){
     $el_users = DB::table('electoral_roll')->get();
-    foreach ($el_users as $u) {
-
-      DB::table('electoral_roll')->where('nino', 'BM741369C' )->update(['nino' => Hash::make($u->nino)]);
+    foreach ($el_users as $key) {
+      DB::table('electoral_roll')->where('id',$key->id)->update(['nino' => Crypt::encrypt($key->nino)]);
     }
+
+
+
+
 });
+//NA897831C
+//7zOnLFMWAU
+
+//PG384437
+//iUireh8Uc0
 
 Route::get('/', function () {
     return view('voter_login');
@@ -30,12 +38,12 @@ Route::get('/', function () {
 
 //Vote authentication
 Route::post('/',function(){
-  $el_roll = DB::table('electoral_roll')->where('nino',Input::get('nationalinsuranceno'))->first();
-  dd(Crypt::decrypt($el_roll->nino));
   $temp = Input::get('dob-year'). "-" .Input::get('dob-month'). "-" .Input::get('dob-day') ;
-  if($el_roll){
+  $el_roll = DB::table('electoral_roll')->where('dob',$temp)->first();
 
-    if($el_roll->vac == Input::get('votecode') && $el_roll->dob == $temp && $el_roll->voted != 1){
+  if($el_roll){
+//Crypt::decrypt($el_roll->vac) == Input::get('votecode') &&
+    if(Crypt::decrypt($el_roll->nino) == Input::get('nationalinsuranceno') && Crypt::decrypt($el_roll->vac) == Input::get('votecode')  && $el_roll->voted != 1){
 
       $_SESSION["auth"]=1;
       Session::put('vot',$el_roll);
@@ -75,7 +83,6 @@ Route::post('vote_page',function(){
   //Voter record for demographic and updating electoral roll
     $voterID = Session::get('vot')->id;
     $voter = DB::table('electoral_roll')->where('id',$voterID)->first();
-
     $age = date("Y") - date("Y", strtotime($voter->dob));
 
     //Get election ID
@@ -152,7 +159,7 @@ Route::get('/admin_home/election', function(){
     return view('election',compact('elections'));
 });
 Route::get('/admin_home/overview', function(){
-    $admin_users = DB::table('admin_users')->get();
+    $admin_users = DB::table('admin_users')->orderBy('id', 'DESC')->get();
     return view('overview',compact('admin_users'));
 });
 
