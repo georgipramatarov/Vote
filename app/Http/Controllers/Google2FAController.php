@@ -34,20 +34,25 @@ class Google2FAController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function enableTwoFactor(Request $request)
+    public function enable(Request $request)
     {
+      //generate secret using the constant time encoding
         $secret2FA = $this->generateSecret();
+        //gets the user object that is currently logged in the system
         $admin_user = $request->user();
+        // encrypts the secret google 2fa and then stores it into the table
         $admin_user->google2fa_secret = Crypt::encrypt($secret2FA);
+        // save the canges to the database
         $admin_user->save();
-
+        //uses the google2fa library to generate the QR code needed for the Google Authenticator application
+        // encodes admin email, secret that was generates
         $QR = Google2FA::getQRCodeGoogleUrl(
             $request->getHttpHost(),
             $admin_user->email,
             $secret2FA,
             200
         );
-
+        //returns the view and passes the Qr code as a parameter
         return view('2fa/enableTwoFactor', ['image' => $QR,
             'secret' => $secret2FA]);
     }
@@ -57,11 +62,13 @@ class Google2FAController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function disableTwoFactor(Request $request)
+    public function disable(Request $request)
     {
+      //gets the current admin logged in
         $admin_user = $request->user();
-
+        //sets the google2fa field in the table to null, to remove the 2fa secret
         $admin_user->google2fa_secret = null;
+        // saves the changes to the table
         $admin_user->save();
 
         return view('2fa/disableTwoFactor');
@@ -74,6 +81,7 @@ class Google2FAController extends Controller
      */
     private function generateSecret()
     {
+      //constant time encoder is used to generate the secret base32 key
         $randomBytes = random_bytes(10);
 
         return Base32::encodeUpper($randomBytes);

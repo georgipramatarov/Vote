@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Cache;
 use Illuminate\Contracts\Auth\Authenticatable;
-use App\Http\Requests\ValidateSecretRequest;
+use App\Http\Requests\Validate;
 
 class LoginController extends Controller
 {
@@ -86,11 +86,13 @@ class LoginController extends Controller
      */
     private function authenticated(Request $request, Authenticatable $user)
     {
+      //checks if the admin has set up 2fa if so the admin is sent to the validation page
         if ($user->google2fa_secret) {
             Auth::logout();
             $request->session()->put('2fa:user:id', $user->id);
             return redirect('2fa/validate');
         }
+        //if the 2fa is not set the user is redirected to the home page
         return redirect('admin_home/overview');
     }
 
@@ -100,27 +102,29 @@ class LoginController extends Controller
     */
    public function getValidateToken()
    {
-       //checks for the validation token
+     //function is used to display the validation field for the one time password if the user id is set
+
+       //if use id is set in the session the user is sent to the validation page
        if (session('2fa:user:id')) {
            return view('2fa/validate');
        }
-       //if not set returns home
+       //if not the user is sent to the login page
        return redirect('admin_login');
    }
 
    /**
  *
- * @param  App\Http\Requests\ValidateSecretRequest $request
+ * @param  App\Http\Requests\Validate $request
  * @return \Illuminate\Http\Response
  */
-public function postValidateToken(ValidateSecretRequest $request)
+public function postValidateToken(Validate $request)
 {
-
+    //get user id and create cache key
     $userId = $request->session()->pull('2fa:user:id');
     $key    = $userId . ':' . $request->totp;
-
+    //adds the key to the cache in order to restrict using the same key more than once in a time frame of 4 minutes
     Cache::add($key, true, 4);
-
+    //use auth to log in user
     Auth::loginUsingId($userId);
     return redirect()->intended($this->redirectTo);
 }

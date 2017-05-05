@@ -146,8 +146,8 @@ Route::get('admin_register', 'AdminAuth\RegisterController@showRegistrationForm'
 Route::post('admin_register', 'AdminAuth\RegisterController@register');
 
 Route::group(['middleware' => 'App\Http\Middleware\DeniedIfNoAdmin'], function(){
-Route::get('/2fa/enable', 'Google2FAController@enableTwoFactor');
-Route::get('/2fa/disable', 'Google2FAController@disableTwoFactor');
+Route::get('/2fa/enable', 'Google2FAController@enable');
+Route::get('/2fa/disable', 'Google2FAController@disable');
 Route::get('/2fa/validate', 'AdminAuth\LoginController@getValidateToken');
 Route::post('/2fa/validate', ['middleware' => 'throttle:5', 'uses' => 'AdminAuth\LoginController@postValidateToken']);
 

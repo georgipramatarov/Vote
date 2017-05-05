@@ -13,7 +13,7 @@ use App\AdminUser;
 use App\Http\Requests\Request;
 use Illuminate\Validation\Factory as ValidatonFactory;
 
-class ValidateSecretRequest extends Request
+class Validate extends Request
 {
     /**
      *
@@ -32,8 +32,9 @@ class ValidateSecretRequest extends Request
         $factory->extend(
             'valid',
             function ($attribute, $value, $parameters, $validator) {
+              // gets the user that is currently trying to log in and decrypts the secret field
                 $secret2FA = Crypt::decrypt($this->user->google2fa_secret);
-
+                // compares and verifies the value that the admin enters to the one we just decrypted
                 return Google2FA::verifyKey($secret2FA, $value);
             },
             'Provided token is not valid'
@@ -41,9 +42,10 @@ class ValidateSecretRequest extends Request
 
         $factory->extend(
             'used',
+            //after the key is used it is stored in the cache and can not be used for the next 4 minutes
             function ($attribute, $value, $parameters, $validator) {
                 $key = $this->user->id . ':' . $value;
-
+                // checks whether the key is still present in the cache if it is returns key already used
                 return !Cache::has($key);
             },
             'Provided token has already been used! Please try again, with a new one.'
